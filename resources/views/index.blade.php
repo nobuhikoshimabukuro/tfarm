@@ -11,8 +11,6 @@
 
 </style>
 
-
-
   {{-- スマホ --}}
   <div class="d-block d-md-none w-100">
     <div class="row p-0 m-0">
