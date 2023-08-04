@@ -84,7 +84,8 @@ class main_controller extends Controller
           
 
             $Today = Carbon::today();
-            $correct_password =  $Today->format('Y') . "t" . $Today->format('md'); 
+            // $correct_password =  $Today->format('Y') . "t" . $Today->format('md'); 
+            $correct_password = $Today->format('md'); 
 
             if($correct_password == $password){
 
