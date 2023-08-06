@@ -1,5 +1,5 @@
 body{    
-    background-color:rgb(234, 241, 215);
+    background-color:rgb(243, 253, 215);
     overflow-y: auto;
     overflow-x:auto;    
     height: 100%;
@@ -15,7 +15,7 @@ a{
 
 /* 製品紹介ページ start */
   
-.product-area{
+.product-area{  
   margin-bottom: 1vh;
 }
 
@@ -32,14 +32,6 @@ a{
   box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
   padding: 1vh 0;
   background-color: #fff;
-}
-
-/* .product-photo-area{
-
-} */
-
-.product-photo{
-  width: 100%;
 }
 
 

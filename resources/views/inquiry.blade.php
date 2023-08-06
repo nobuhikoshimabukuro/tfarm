@@ -162,6 +162,12 @@
                     </tr>
 
                 </table>
+
+                <div id="message_area">
+                </div>
+                
+
+
             </div>
 
         </div>

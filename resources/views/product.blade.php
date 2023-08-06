@@ -26,6 +26,53 @@
 
 
 
+
+
+
+
+.scroll-box {
+    display: flex;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+
+.product-photo-area{    
+    padding: 1vh;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.product-photo{    
+    width: 80%;    
+}
+
+
+
+
+
+
+
+.product-change-btn {
+    color: #fff;
+    background-color: #eb6100;
+    margin: 0 3px;
+    border-bottom: 5px solid #b84c00;
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+
+.product-change-btn:hover {
+  margin-top: 3px;
+  color: #fff;
+  background: #f56500;
+  border-bottom: 2px solid #b84c00;
+}
+
+
+
+
+
 </style>
 
 <div id="main" class="mt-3 text-center container">
@@ -48,34 +95,26 @@
         
     </div>
 
-    <div class="product-area row">            
 
+
+    <div class="row">            
+
+       
         
-        <div class="product-name-area col-12 m-0 p-0">
-            <h3 class="product-name">
-                アップルマンゴー
-            </h3>           
-        </div>    
-    
-
-        <div class="product-photo-area info-box col-12 col-xl-6 m-0">
-            <img src="{{ asset('img/product/0001.jpg') }}" class="product-photo" alt="アップルマンゴー"> 
-        </div>
-    
-
-        <div class="product-explanation-area info-box col-12 col-xl-6 m-0">
-            <p class="product-explanation">
-                アップルマンゴーとは、熟すと果皮がリンゴのように真っ赤になるマンゴーを総称して「アップルマンゴー」と呼びます。 
-                そして、アップルマンゴーの代表的な品種が「アーウィン種」で、
-                果皮が赤くなるマンゴーの種類もいろいろあります。
-                日本国内の栽培は、96.5%がアーウィン種と言われているほど日本でポピュラーな品種です。
-            </p>
-        </div>
-
+            
+            
+        
     </div>
 
-    <div class="product-area row">            
 
+
+
+    @php
+        $index = 1;
+        $photo_name_array = array("商品1の写真1", "商品1の写真2", "商品1の写真3");
+    @endphp
+
+    <div id="product{{$index}}" class="product-area row" data-selectkinds='1'>
         
         <div class="product-name-area col-12 m-0 p-0">
             <h3 class="product-name">
@@ -84,8 +123,60 @@
         </div>    
     
 
-        <div class="product-photo-area info-box col-12 col-xl-6 m-0">
-            <img src="{{ asset('img/product/0001.jpg') }}" class="product-photo" alt=""> 
+        <div class="info-box col-12 col-xl-6 m-0 ">           
+
+            <div class="scroll-box">
+
+                <div class="product-photo-area kinds-1"
+                data-leftbtn=''
+                data-rightbtn='{{$photo_name_array[1]}}'
+                >
+                    <h2>{{ $photo_name_array[0] }}</h2>
+                    <img src="{{ asset('img/product/0001.jpg') }}" class="product-photo" alt="{{ $photo_name_array[0] }}"> 
+                </div>
+
+                <div class="product-photo-area kinds-2"
+                data-leftbtn='{{$photo_name_array[0]}}'
+                data-rightbtn='{{$photo_name_array[2]}}'
+                >
+                    <h2>{{ $photo_name_array[1] }}</h2>
+                    <img src="{{ asset('img/product/0002.jpg') }}" class="product-photo" alt="{{ $photo_name_array[1] }}"> 
+                </div>       
+
+                <div class="product-photo-area kinds-3"
+                data-leftbtn='{{$photo_name_array[1]}}'
+                data-rightbtn=''
+                >
+                    <h2>{{ $photo_name_array[2] }}</h2>
+                    <img src="{{ asset('img/product/0001.jpg') }}" class="product-photo" alt="{{ $photo_name_array[2] }}"> 
+                </div>       
+
+            </div>       
+
+            <div class="row p-0 m-0">
+
+                <div class="col-6 p-0 m-0 text-start">                 
+                    <a class="btn product-change-btn product-change-left d-none"
+                    data-targetproduct='{{$index}}'                                
+                    >
+                        <span class="product-change-left-btn"></span>
+                    </a>
+                </div>
+
+                <div class="col-6 p-0 m-0 text-end" >
+                    <a class="btn product-change-btn product-change-right"
+                    data-targetproduct='{{$index}}'
+                    >
+                        <span class="product-change-right-btn">
+                            {{ $photo_name_array[1] }}
+                        </span>
+                    </a>                    
+                </div>
+
+
+            </div>
+
+            
         </div>
     
 
@@ -101,31 +192,12 @@
     </div>
 
 
-    
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{-- 登録/更新用モーダル --}}
     <div class="modal fade" id="info_modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="info_modal_label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-fluid">
             <div class="modal-content">
@@ -169,6 +241,96 @@
 @section('pagejs')
 
 <script type="text/javascript">
+
+$('.product-change-left').click(function () {
+
+    //商品のindex取得
+    var target_product = $(this).data('targetproduct');
+
+    //商品のid
+    var target_product_area = "#product" + target_product;    
+
+    //商品のidから現在選択されている写真Noを取得
+    var select_kinds = $(target_product_area).data('selectkinds');
+
+    var next_kinds = select_kinds - 1;
+
+    var next_kinds_info = target_product_area + " .kinds-" + next_kinds;
+
+    var left_btn = $(next_kinds_info).data('leftbtn');
+    var right_btn = $(next_kinds_info).data('rightbtn');
+
+    $(target_product_area + " .product-change-left-btn").html(left_btn);
+    $(target_product_area + " .product-change-right-btn").html(right_btn);
+
+    //商品下部のボタンの可視化
+    $(target_product_area + " .product-change-btn").removeClass("d-none");
+
+    if(left_btn == ""){
+        $(target_product_area + " .product-change-left").addClass("d-none");   
+    }
+
+    if(right_btn == ""){
+        $(target_product_area + " .product-change-right").addClass("d-none");
+    }
+
+    $(target_product_area).data('selectkinds', next_kinds);    
+
+    
+
+    var scroll_width = $('.scroll-box').width();
+
+
+
+    $('.scroll-box').animate({
+        scrollLeft: $('.scroll-box').scrollLeft() - scroll_width //〇〇px左にスクロールする
+    }, 300); //スクロールにかかる時間
+
+});
+
+$('.product-change-right').click(function () {
+
+    //商品のindex取得
+    var target_product = $(this).data('targetproduct');
+
+    //商品のid
+    var target_product_area = "#product" + target_product;    
+
+    //商品のidから現在選択されている写真Noを取得
+    var select_kinds = $(target_product_area).data('selectkinds');
+
+    var next_kinds = select_kinds + 1;
+
+    var next_kinds_info = target_product_area + " .kinds-" + next_kinds;
+
+    var left_btn = $(next_kinds_info).data('leftbtn');
+    var right_btn = $(next_kinds_info).data('rightbtn');
+
+    $(target_product_area + " .product-change-left-btn").html(left_btn);
+    $(target_product_area + " .product-change-right-btn").html(right_btn);
+
+    //商品下部のボタンの可視化
+    $(target_product_area + " .product-change-btn").removeClass("d-none");
+
+    if(left_btn == ""){
+        $(target_product_area + " .product-change-left").addClass("d-none");   
+    }
+
+    if(right_btn == ""){
+        $(target_product_area + " .product-change-right").addClass("d-none");
+    }
+
+    $(target_product_area).data('selectkinds', next_kinds);    
+
+    
+
+    var scroll_width = $('.scroll-box').width();
+
+    $('.scroll-box').animate({
+        scrollLeft: $('.scroll-box').scrollLeft() + scroll_width //〇〇px右にスクロールする
+    }, 300); //スクロールにかかる時間
+
+});
 
 </script>
 

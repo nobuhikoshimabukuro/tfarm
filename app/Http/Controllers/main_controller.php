@@ -14,7 +14,8 @@ class main_controller extends Controller
 {
     function index(Request $request)
     {       
-        
+
+                
         if(!$this->session_confirmation()){
             $desired_url = route('index');
             session()->flash('desired_url', $desired_url);

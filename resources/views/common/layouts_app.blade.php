@@ -67,22 +67,24 @@
     <div class="d-none d-md-block w-100">
 
         <!--ヘッダー-->
-        <header>
+        <header class="m-0 p-0">
 
+            
             <!--▽▽ヘッダーロゴ▽▽-->
                 <div class="">
                     <a class="" href="{{ route('index') }}">
                         <img id="" src="{{ asset('img/logo/tf_logo.png') }}" class="tf_logo" alt="tf_logo">
                     </a>
                 </div>
+            
             <!--△△ヘッダーロゴ△△-->
 
 
-            <div class="title">
-                <h4>
+            
+                <h3 class="m-0 p-0" style="line-height: 60px;">
                     たかすじファーム
-                </h4>              
-            </div>
+                </h3>              
+            
 
             {{-- <div class="title">                
                 <p>
@@ -90,7 +92,9 @@
                 </p>
             </div> --}}
 
+
             <!--▽▽ヘッダーリスト▽▽-->
+            
                 <nav class="pc">  <!--pcクラスを追記-->
                     <ul>
                         <li>
@@ -124,6 +128,7 @@
                         </li>  
                     </ul>
                 </nav>
+            
             <!--△△ヘッダーリスト△△-->
             
         </header>
@@ -214,8 +219,7 @@
 
     <!-- ページトップへ戻るボタン -->
     {{-- <div class="page-top"> --}}
-        <a href="#" class="page-top">
-            {{-- <i class="fas fa-angle-double-up">　top</i> --}}
+        <a href="#" class="page-top">            
          </a>
     {{-- </div> --}}
   
@@ -237,18 +241,15 @@
 
 
   $('#hamburger').on('click', function(){
-  $('.icon').toggleClass('close');
-  $('.sm').slideToggle();
+    $('.icon').toggleClass('close');
+    $('.sm').slideToggle();
   });
-
-  var pagetop = $('.page-top');
-
 
   $(window).on('scroll', function() {//スクロールしたとき、
     if ($(this).scrollTop() > 500) { //スクロール量が500px以上なら、
-      pagetop.addClass('active');    //activeクラスを付与し、
+        $('.page-top').addClass('active');    //activeクラスを付与し、
     } else {                         //500px未満なら、
-      pagetop.removeClass('active'); //activeクラスを外します。
+        $('.page-top').removeClass('active'); //activeクラスを外します。
     }
   });
 

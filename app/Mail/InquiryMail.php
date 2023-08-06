@@ -17,6 +17,7 @@ class InquiryMail extends Mailable
 
     public $Subject;
     public $inquirer_name;
+    public $inquiry_time;
     public $mailaddress;
     public $question;
 
