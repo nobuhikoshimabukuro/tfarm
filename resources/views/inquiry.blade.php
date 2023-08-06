@@ -7,13 +7,15 @@
 @section('content')
 
 <style>
+
+/* Q&A  start */
 .qa-007 {
     /* max-width: 500px; */
     margin-bottom: 10px;
     border: none;
     border-radius: 5px;
     box-shadow: 0 4px 4px rgb(0 0 0 / 2%), 0 2px 3px -2px rgba(0 0 0 / 5%);
-    background-color: #fff;
+    background-color: #f4ebf5;
 }
 
 .qa-007 summary {
@@ -75,10 +77,37 @@
     line-height: 1.2;
     content: "A";
 }
+/* Q&A  end */
+
+/* お問い合わせの説明書き   start */
+.explanation-area{
+    padding: 1vh;
+}
+
+.explanation-area p{
+    color: #270e04;    
+    font-weight: 600;
+}
+/* お問い合わせの説明書き   end */
 
 
+.form-table{
+    min-width: 100%;
+}
+
+.form-table td{
+    padding: 0 1vh;
+    font-weight: 600;
+}
+
+.form-table textarea{
+    resize: none;
+}
 
 
+#send_mail_button{
+    margin-top: 1vh;
+}
 
 
 
@@ -90,16 +119,71 @@
 <div id="main" class="mt-3 container">
 
 
+    <div class="product-area row">      
+        
+        <div class="product-name-area col-12 m-0 p-0 text-center">
+            <h3 class="product-name">
+                よくあるご質問
+            </h3>         
+        </div>   
 
+        <div class="col-12 info-box" style="padding: 1vh;">
 
-    <details class="qa-007">
-        <summary>これはどのようなテンプレートですか？</summary>
-        <p>白背景にシャドウを付けた、アコーディオンとして開閉できるQ&Aです。</p>
-    </details>
-    <details class="qa-007">
-        <summary>どのような特徴がありますか？</summary>
-        <p>コンパクトに見せられるので、質問の数が多い場合などにおすすめです。</p>
-    </details>
+            <details class="qa-007">
+                                
+                <summary>
+                    どのうように購入するのでしょうか？
+                </summary>
+
+                <p>
+                    このHPからのご購入は出来かねます。
+                    <br>
+                    大変ご不便をお掛け致しますが、BASEからのご購入をお願い致します。
+                    <br>
+                    参考:<a href="https://help.thebase.in/hc/ja/articles/115000085522-BASE" target="_blank">
+                        <span style="color: blue">BASEとは
+                        </span>
+                        </a>
+                    <br>
+                    たかすじファーム:<a href="{{ env('base_url')}}" target="_blank">
+                        <span style="color: blue">購入ページ
+                        </span>
+                        </a>
+
+                    
+                </p>
+
+            </details>
+            
+            <details class="qa-007">
+                                
+                <summary>
+                    沖縄県以外にも発送可能ですか？
+                </summary>
+
+                <p>
+                    日本国内であれば発送致します。
+                    <br>
+                    （2023年8月時点）
+                </p>
+
+            </details>
+
+            <details class="qa-007">
+                                
+                <summary>
+                    農園見学等は行っていますか？
+                </summary>
+
+                <p>
+                    農園見学は行っておりません。
+                </p>
+                
+            </details>
+
+        </div>
+
+    </div>
 
 
 
@@ -111,47 +195,71 @@
 
         <div class="product-area row">            
         
-            <div class="col-12 col-xl-6 m-0">
-                ここに説明書き   
+
+            <div class="product-name-area col-12 m-0 p-0 text-center">
+                <h3 class="product-name">
+                    お問い合わせ
+                </h3>         
+            </div>   
+
+            <div class="info-box explanation-area col-12 col-xl-6 m-0">
+                <p>
+                    ご不明な点があれば、お問い合わせください。
+                    <br>
+                    お問い合わせ後、自動返信メールがご指定頂いたメールアドレスに送られます。
+                    <br>
+                    自動返信のメールアドレスは
+                    <br>
+                    【{{ env('noreply_mailaddress') }}】
+                    <br>
+                    その後、担当者より数日以内にご回答メールをお送り致します。
+                    <br>
+                    ※設定によっては迷惑メールに受信される可能性もございますので、確認を宜しくお願い致します。
+                </p>
             </div>
         
 
-            <div class="col-12 col-xl-6 m-0">
-                <table style="min-width: 100%">
+            <div class="info-box col-12 col-xl-6 m-0">
+
+                <table class="form-table">
 
                     <tr>
-                        <th class="text-start">
+                        <td class="text-start">
                             氏名
-                        </th>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="text" name="inquirer_name" id="inquirer_name" value="" class="form-control text-start">
                         </td>
                     </tr>
 
                     <tr>
-                        <th class="text-start">
+                        <td>
+                            <input type="text" name="inquirer_name" id="inquirer_name" value="" class="form-control text-start" 
+                            placeholder="仮名でも構いません">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-start">
                             メールアドレス
-                        </th>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="text" name="mailaddress" id="mailaddress" value="" class="form-control text-start">                                
                         </td>
                     </tr>
 
                     <tr>
-                        <th class="text-start">
+                        <td>
+                            <input type="text" name="mailaddress" id="mailaddress" value="" class="form-control text-start"
+                            placeholder="mango@example.com">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-start">
                             お問い合わせ
-                        </th>
+                        </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <input type="text" name="question" id="question" value="" class="form-control text-start">                                
+                            <textarea name="question" id="question" value="" class="form-control text-start" rows="5" 
+                            placeholder="お問い合わせ内容をお書き下さい。"></textarea>
+                                                    
                         </td>
                     </tr>
 

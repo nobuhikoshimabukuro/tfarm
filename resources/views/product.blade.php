@@ -116,7 +116,7 @@
 
     <div id="product{{$index}}" class="product-area row" data-selectkinds='1'>
         
-        <div class="product-name-area col-12 m-0 p-0">
+        <div class="product-name-area col-12 m-0 p-0 text-center">
             <h3 class="product-name">
                 アップルマンゴー
             </h3>         
