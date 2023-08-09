@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Exception;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InquiryMail;
@@ -15,6 +16,7 @@ class main_controller extends Controller
     function index(Request $request)
     {       
 
+      
                 
         if(!$this->session_confirmation()){
             $desired_url = route('index');
@@ -157,14 +159,28 @@ class main_controller extends Controller
 
         try {
 
+            $now = Carbon::now();        
+
+            $date_time =  $now->toDateTimeString();
+
             $inquirer_name = $request->inquirer_name;
             $mailaddress = $request->mailaddress;
             $question = $request->question;        
-            Mail::to($mailaddress)->send(new InquiryMail($inquirer_name , $mailaddress , $question));
+
+
+            $log_text = "メール送信開始";
+            Log::error($log_text);
+
+            //顧客に返信不要メール送信
+            Mail::to($mailaddress)->send(new InquiryMail($inquirer_name , $mailaddress , $question , $date_time, 1));
+            //管理者に詳細メール送信
+            Mail::to(env('automatic_destination_mailaddress'))->send(new InquiryMail($inquirer_name , $mailaddress , $question , $date_time , 2));
 
         } catch (Exception $e) {
+            
+            $log_text = $e->getMessage();
+            Log::error($log_text);
 
-                
             $ErrorMessage = 'メール送信処理でエラーが発生しました。';
 
             $ResultArray = array(

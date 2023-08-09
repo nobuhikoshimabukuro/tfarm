@@ -17,8 +17,8 @@
     width:100px;
     height:100px;
     position:fixed;
-    right:1vw;
-    bottom:1vh;
+    right:0;
+    bottom:0;
     /* background-color: rgba(241, 182, 225, 0.3); */
     background-color:none;
     color:white;
@@ -80,18 +80,9 @@
 
     <div class="fixed-area row">            
 
-       
-        <div class="col-12">
-
-                <button class='' data-bs-toggle='modal' data-bs-target='#info_modal'> 
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
-
-                
-                
-            </div>    
-            
-            
+        <button class='' data-bs-toggle='modal' data-bs-target='#info_modal'> 
+            <i class="fas fa-shopping-cart"></i>
+        </button>
         
     </div>
 

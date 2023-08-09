@@ -114,6 +114,34 @@
 
 
 
+.flowing {
+	width: 0;
+	margin: 0;
+	font-size: 19px;
+	font-weight: bold;
+	/* color: #ff6347; */
+    color: #270e04;
+	white-space: nowrap;
+	overflow: hidden;
+	animation: flowing-anim 3s forwards linear;
+}
+
+.flowing:nth-child(2) {
+	animation-delay: 2.5s;
+}
+
+
+@keyframes flowing-anim {
+ 0%{
+	 width: 0%;
+   }
+100%{
+	 width: 100%;
+   }
+}
+
+
+
 </style>
 
 <div id="main" class="mt-3 container">
@@ -136,7 +164,7 @@
                 </summary>
 
                 <p>
-                    このHPからのご購入は出来かねます。
+                    このHPからのご購入はできません。
                     <br>
                     大変ご不便をお掛け致しますが、BASEからのご購入をお願い致します。
                     <br>
@@ -162,9 +190,15 @@
                 </summary>
 
                 <p>
-                    日本国内であれば発送致します。
-                    <br>
+                    日本国内であれば発送可能です。
+                    <br>                    
                     （2023年8月時点）
+                    <br>
+                    ※離島や特殊配達地域等に発送ご希望の場合は、
+                    <br>
+                    ご確認致しますので、気軽にお問い合わせください。
+                    
+                    
                 </p>
 
             </details>
@@ -269,12 +303,7 @@
                         </td>
                     </tr>
 
-                </table>
-
-                <div id="message_area">
-                </div>
-                
-
+                </table>              
 
             </div>
 
@@ -284,8 +313,44 @@
     </form>
 
 
+    
 
+
+    <button type="button" id='test' class="btn btn-secondary">問い合わせる</button>                            
         
+
+    {{-- お問い合わせ開始時のモーダル --}}
+    <div class="modal fade" id="info_modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="info_modal_label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-fluid">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="info_modal_label"></h5>
+                    <button type="button" class="btn-close info_modal_close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+              
+                <div class="modal-body">  
+                    <div class="modal-body-message-area text-center">  
+                        <p class="flowing text-center">お問い合わせ内容を送信中です。</p>                            
+                        <p class="flowing text-center">しばらくお待ち下さい。</p>
+                    </div>  
+                    
+                   
+                    
+                </div>  
+
+                
+                <div class="modal-footer row">  
+
+                    <div class="col-6 m-0 p-0 text-end">
+                        <button type="button" id="" class="btn btn-secondary info_modal_close" data-bs-dismiss="modal">閉じる</button>
+                    </div>  
+                </div>  
+
+            </div>
+        </div>
+    </div>
     
     
 </div>
@@ -303,6 +368,13 @@
 @section('pagejs')
 
 <script type="text/javascript">
+
+
+$(document).on("click", "#test", function (e) {
+        // モーダル表示
+        $('#info_modal').modal('show');
+    });
+
 
 
     $(document).on("click", "#send_mail_button", function (e) {
@@ -349,6 +421,10 @@
         }
 
 
+        // モーダル表示
+        $('#info_modal').modal('show');
+        // モーダル閉じるボタンを比活性
+        $('.info_modal_close').prop('disabled', true);
 
         var display_html = '';
             display_html = '<div class="text-start">';
@@ -370,6 +446,9 @@
                 
                 //{{-- ボタン有効 --}}
                 $('#send_mail_button').prop("disabled", false);
+
+                // モーダル閉じるボタンを活性
+                $('.info_modal_close').prop('disabled', false);
                 
                 var ResultArray = data.ResultArray;
 
@@ -416,13 +495,11 @@
             // 送信失敗
             .fail(function (data, textStatus, errorThrown) {
                 
-                
-                display_html = '<div class="alert alert-danger text-start">';
-                display_html += '<li class="text-start">メール送信処理でエラーが発生しました。</li>';
-                display_html += '</div>';
 
-                //{{-- アラート --}}
-                $('#message_area').html(display_html);
+                // モーダル閉じるボタンを活性
+                $('.info_modal_close').prop('disabled', false);
+                
+             
                 //{{-- 画面上部へ --}}
                 $("html,body").animate({
                     scrollTop: 0

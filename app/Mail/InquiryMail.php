@@ -20,21 +20,22 @@ class InquiryMail extends Mailable
     public $inquiry_time;
     public $mailaddress;
     public $question;
+    public $date_time;
+    public $branch;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($inquirer_name,$mailaddress,$question)
+    public function __construct($inquirer_name,$mailaddress,$question,$date_time,$branch)
     {
 
-        $now = Carbon::now();        
-
-        $this->Subject = "【" . $now->toDateTimeString() . "】のお問い合わせです。";
         $this->inquirer_name = $inquirer_name;
         $this->mailaddress = $mailaddress;
         $this->question = $question;
+        $this->date_time = $date_time;
+        $this->branch = $branch;
     }
 
     /**
@@ -44,9 +45,30 @@ class InquiryMail extends Mailable
      */
     public function build()
     {
-        return $this
-        ->view('mails.inquiry_mail')
-        ->subject($this->Subject)
-        ->with(['inquirer_name' => $this->inquirer_name , 'mailaddress' => $this->mailaddress , 'question' => $this->question]); 
+
+        $subject = "";
+
+        if($this->branch == 1){
+
+            $subject = "たかすじファームからの自動送信メールです。";
+
+            return $this
+            ->view('mails.noreply')
+            ->subject($subject)
+            ->with(['inquirer_name' => $this->inquirer_name , 'mailaddress' => $this->mailaddress , 'question' => $this->question , 'date_time' => $this->date_time]); 
+
+        }else{
+
+            $subject = "【" . $this->date_time . "】のお問い合わせです。";
+
+            return $this
+            ->view('mails.inquiry_mail')
+            ->subject($subject)
+            ->with(['inquirer_name' => $this->inquirer_name , 'mailaddress' => $this->mailaddress , 'question' => $this->question]); 
+
+        }
+
+
+       
     }
 }
