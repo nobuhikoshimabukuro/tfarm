@@ -15,11 +15,7 @@ class main_controller extends Controller
 {
     function index(Request $request)
     {       
-
-      
-        $log_text = "test";
-        Log::error($log_text);
-                
+        
         if(!$this->session_confirmation()){
             $desired_url = route('index');
             session()->flash('desired_url', $desired_url);
@@ -170,8 +166,8 @@ class main_controller extends Controller
             $question = $request->question;        
 
 
-            $log_text = "メール送信開始";
-            Log::error($log_text);
+            // $log_text = "メール送信開始";
+            // Log::error($log_text);
 
             //顧客に返信不要メール送信
             Mail::to($mailaddress)->send(new InquiryMail($inquirer_name , $mailaddress , $question , $date_time, 1));
@@ -180,8 +176,8 @@ class main_controller extends Controller
 
         } catch (Exception $e) {
             
-            $log_text = $e->getMessage();
-            Log::error($log_text);
+            // $log_text = $e->getMessage();
+            // Log::error($log_text);
 
             $ErrorMessage = 'メール送信処理でエラーが発生しました。';
 
