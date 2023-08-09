@@ -34,7 +34,7 @@
 
 <br>
 <br>
-【返信用メールアドレス】
+【ご返信時メールアドレス】
 <br>
 {{ env('automatic_destination_mailaddress')}}
 <br>
