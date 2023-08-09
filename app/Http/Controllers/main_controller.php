@@ -17,6 +17,8 @@ class main_controller extends Controller
     {       
 
       
+        $log_text = "test";
+        Log::error($log_text);
                 
         if(!$this->session_confirmation()){
             $desired_url = route('index');
