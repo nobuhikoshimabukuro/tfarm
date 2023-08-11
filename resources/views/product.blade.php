@@ -78,13 +78,13 @@
 <div id="main" class="mt-3 text-center container">
 
 
-    <div class="fixed-area row">            
+    {{-- <div class="fixed-area row">            
 
         <button class='' data-bs-toggle='modal' data-bs-target='#info_modal'> 
             <i class="fas fa-shopping-cart"></i>
         </button>
         
-    </div>
+    </div> --}}
 
 
 
@@ -102,7 +102,7 @@
 
     @php
         $index = 1;
-        $photo_name_array = array("商品1の写真1", "商品1の写真2", "商品1の写真3");
+        $photo_name_array = array("栽培中のマンゴ", "箱詰めされたマンゴ", "おいそうなマンゴ");
     @endphp
 
     <div id="product{{$index}}" class="product-area row" data-selectkinds='1'>
@@ -139,7 +139,7 @@
                 data-rightbtn=''
                 >
                     <h2>{{ $photo_name_array[2] }}</h2>
-                    <img src="{{ asset('img/product/0001.jpg') }}" class="product-photo" alt="{{ $photo_name_array[2] }}"> 
+                    <img src="{{ asset('img/product/0003.jpg') }}" class="product-photo" alt="{{ $photo_name_array[2] }}"> 
                 </div>       
 
             </div>       

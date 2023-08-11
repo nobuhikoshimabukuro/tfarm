@@ -164,8 +164,7 @@
                 </summary>
 
                 <p>
-                    このHPからのご購入はできません。
-                    <br>
+                    このHPからのご購入はできません。                    
                     大変ご不便をお掛け致しますが、BASEからのご購入をお願い致します。
                     <br>
                     参考:<a href="https://help.thebase.in/hc/ja/articles/115000085522-BASE" target="_blank">
@@ -316,7 +315,7 @@
     
 
 
-    <button type="button" id='test' class="btn btn-secondary">問い合わせる</button>                            
+    {{-- <button type="button" id='test' class="btn btn-secondary">問い合わせる</button>                             --}}
         
 
     {{-- お問い合わせ開始時のモーダル --}}
@@ -332,8 +331,7 @@
               
                 <div class="modal-body">  
                     <div class="modal-body-message-area text-center">  
-                        <p class="flowing text-center">お問い合わせ内容を送信中です。</p>                            
-                        <p class="flowing text-center">しばらくお待ち下さい。</p>
+                        <p class="flowing text-center">お問い合わせ内容を送信中です。</p>
                     </div>  
                     
                    
@@ -453,16 +451,15 @@ $(document).on("click", "#test", function (e) {
                 var ResultArray = data.ResultArray;
 
                 var Result = ResultArray["Result"];
-
                 
+                $('.modal-body-message-area').html("");
 
                 if(Result=='success'){
+                
                     
-                    display_html = '<div class="text-start">';
-                    display_html += 'メールを送信しました。';
-                    display_html += '</div>';
+                    display_html = '<p class="flowing text-center">お問い合わせ内容をお送り致しました。</p>';                               
 
-                    $('#message_area').html(display_html);                   
+                    $('.modal-body-message-area').html(display_html);
 
                     $("html,body").animate({
                         scrollTop: 0
@@ -475,17 +472,16 @@ $(document).on("click", "#test", function (e) {
 
                     
                     
-                    display_html = '<div class="alert alert-danger text-start">';
-                    display_html += '<li class="text-start">' + ErrorMessage + '</li>';
-                    display_html += '</div>';
+                    display_html = '<p class="flowing text-center">お問い合わせ内容をお送り致しました。</p>';           
 
                         //{{-- アラート --}}
-                    $('#message_area').html(display_html);
+                    $('.modal-body-message-area').html(display_html);
                     //{{-- 画面上部へ --}}
 
                     $("html,body").animate({
                         scrollTop: 0
                     }, "300");                 
+
 
                 }
 
@@ -496,6 +492,12 @@ $(document).on("click", "#test", function (e) {
             .fail(function (data, textStatus, errorThrown) {
                 
 
+                $('.modal-body-message-area').html("");
+
+                display_html = '<p class="flowing text-center">お問い合わせ内容をお送り致しました。</p>';           
+
+                //{{-- アラート --}}
+                $('.modal-body-message-area').html(display_html);
                 // モーダル閉じるボタンを活性
                 $('.info_modal_close').prop('disabled', false);
                 
