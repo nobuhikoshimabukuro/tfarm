@@ -461,10 +461,7 @@ $(document).on("click", "#test", function (e) {
 
                     $('.modal-body-message-area').html(display_html);
 
-                    $("html,body").animate({
-                        scrollTop: 0
-                    }, "300");          
-
+                 
 
                 }else{
 
@@ -478,10 +475,7 @@ $(document).on("click", "#test", function (e) {
                     $('.modal-body-message-area').html(display_html);
                     //{{-- 画面上部へ --}}
 
-                    $("html,body").animate({
-                        scrollTop: 0
-                    }, "300");                 
-
+                  
 
                 }
 
@@ -503,9 +497,9 @@ $(document).on("click", "#test", function (e) {
                 
              
                 //{{-- 画面上部へ --}}
-                $("html,body").animate({
-                    scrollTop: 0
-                }, "300");
+                // $("html,body").animate({
+                //     scrollTop: 0
+                // }, "300");
                
 
             });
