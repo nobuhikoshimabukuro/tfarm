@@ -1,7 +1,7 @@
 @extends('common.layouts_app')
 
 @section('pagehead')
-@section('title', '法人用')  
+@section('title', 'パートナー募集')  
 
 @endsection
 @section('content')

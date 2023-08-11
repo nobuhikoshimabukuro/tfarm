@@ -107,11 +107,11 @@
                             </a>
                         </li>
     
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('forcorporation') }}">
                                 法人用
                             </a>
-                        </li>
+                        </li> --}}
     
                         <li>
                             <a href="{{ route('inquiry') }}">
@@ -174,12 +174,12 @@
                         </a>
                     </li>
 
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('forcorporation') }}">                            
                             <img id="" src="{{ asset('img/logo/0003.jpg') }}" class="product_logo" alt="tf_logo">
                             法人用
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li>
                         <a href="{{ route('inquiry') }}">                            
