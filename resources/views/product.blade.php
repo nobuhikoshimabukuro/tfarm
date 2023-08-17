@@ -34,7 +34,7 @@
     display: flex;
     white-space: nowrap;
     overflow-x: hidden;
-    height: 45vh;
+    /* height: 45vh; */
 }
 
 
@@ -45,8 +45,8 @@
 }
 
 .product-photo{    
-    /* width: 80%;     */
-    height: 85%;
+    width: 85%;    
+    /* height: 85%; */
 }
 
 
@@ -58,7 +58,7 @@
 .product-change-btn {
     color: #fff;
     background-color: #eb6100;
-    margin: 0 3px;
+    margin: 0 2vh;
     border-bottom: 5px solid #b84c00;
     -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
     box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
@@ -104,7 +104,7 @@
 
     @php
         $index = 1;
-        $photo_name_array = array("栽培中のマンゴ", "箱詰めされたマンゴ", "おいそうなマンゴ");
+        $photo_name_array = array("栽培中のマンゴー", "箱詰めされたマンゴー", "おいそうなマンゴー");
     @endphp
 
     <div id="product{{$index}}" class="product-area row" data-selectkinds='1'>
@@ -125,7 +125,7 @@
                 data-rightbtn='{{$photo_name_array[1]}}'
                 >
                     <h2>{{ $photo_name_array[0] }}</h2>
-                    <img src="{{ asset('img/product/0001.jpg') }}" class="product-photo" alt="{{ $photo_name_array[0] }}"> 
+                    <img src="{{ asset('img/product/applemango/0001.jpg') }}" class="product-photo" alt="{{ $photo_name_array[0] }}"> 
                 </div>
 
                 <div class="product-photo-area kinds-2"
@@ -133,7 +133,7 @@
                 data-rightbtn='{{$photo_name_array[2]}}'
                 >
                     <h2>{{ $photo_name_array[1] }}</h2>
-                    <img src="{{ asset('img/product/0002.jpg') }}" class="product-photo" alt="{{ $photo_name_array[1] }}"> 
+                    <img src="{{ asset('img/product/applemango/0002.jpg') }}" class="product-photo" alt="{{ $photo_name_array[1] }}"> 
                 </div>       
 
                 <div class="product-photo-area kinds-3"
@@ -141,7 +141,7 @@
                 data-rightbtn=''
                 >
                     <h2>{{ $photo_name_array[2] }}</h2>
-                    <img src="{{ asset('img/product/0003.jpg') }}" class="product-photo" alt="{{ $photo_name_array[2] }}"> 
+                    <img src="{{ asset('img/product/applemango/0003.jpg') }}" class="product-photo" alt="{{ $photo_name_array[2] }}"> 
                 </div>       
 
             </div>       
@@ -183,6 +183,87 @@
         </div>
 
     </div>
+
+
+
+
+
+
+    @php
+        $index = 2;
+        $photo_name_array = array("箱詰めキーツマンゴー", "おいしそうなキーツマンゴー");
+    @endphp
+
+    <div id="product{{$index}}" class="product-area row" data-selectkinds='1'>
+        
+        <div class="product-name-area col-12 m-0 p-0 text-center">
+            <h3 class="product-name">
+                キーツマンゴー
+            </h3>         
+        </div>    
+    
+
+        <div class="info-box col-12 col-xl-6 m-0 ">           
+
+            <div class="scroll-box">
+
+                <div class="product-photo-area kinds-1"
+                data-leftbtn=''
+                data-rightbtn='{{$photo_name_array[1]}}'
+                >
+                    {{-- <h2>{{ $photo_name_array[0] }}</h2> --}}
+                    <img src="{{ asset('img/product/keatsmango/0001.jpg') }}" class="product-photo" alt="{{ $photo_name_array[0] }}"> 
+                </div>               
+
+                <div class="product-photo-area kinds-2"
+                data-leftbtn='{{$photo_name_array[0]}}'
+                data-rightbtn=''
+                >
+                    {{-- <h2>{{ $photo_name_array[1] }}</h2> --}}
+                    <img src="{{ asset('img/product/keatsmango/0002.jpg') }}" class="product-photo" alt="{{ $photo_name_array[1] }}"> 
+                </div>       
+
+            </div>       
+
+            <div class="row p-0 m-0">
+
+                <div class="col-6 p-0 m-0 text-start">                 
+                    <a class="btn product-change-btn product-change-left d-none"
+                    data-targetproduct='{{$index}}'                                
+                    >
+                        <span class="product-change-left-btn"></span>
+                    </a>
+                </div>
+
+                <div class="col-6 p-0 m-0 text-end" >
+                    <a class="btn product-change-btn product-change-right"
+                    data-targetproduct='{{$index}}'
+                    >
+                        <span class="product-change-right-btn">
+                            {{ $photo_name_array[1] }}
+                        </span>
+                    </a>                    
+                </div>
+
+
+            </div>
+
+            
+        </div>
+    
+
+        <div class="product-explanation-area info-box col-12 col-xl-6 m-0">
+            <p class="product-explanation">
+                キーツマンゴーとは、マンゴーの品種のなかのひとつで、
+                収穫量が少なく市場にあまり出回らないことから「幻のマンゴー」や「マンゴーの王様」と呼ばれている。 
+                アップルマンゴーよりも糖度が高くなることもある幻のマンゴー。 夏の贅沢として一度は食べてほしい。            
+                
+            </p>
+        </div>
+
+    </div>
+
+
 
 
 
@@ -271,15 +352,16 @@ $('.product-change-left').click(function () {
 
     
 
-    var scroll_width = $('.scroll-box').width();
+    var target_scroll_box_area = target_product_area + ' .scroll-box';
 
+    var scroll_width = $(target_scroll_box_area).width();    
 
-
-    $('.scroll-box').animate({
-        scrollLeft: $('.scroll-box').scrollLeft() - scroll_width //〇〇px左にスクロールする
+    $(target_scroll_box_area).animate({
+        scrollLeft: $(target_scroll_box_area).scrollLeft() - scroll_width //〇〇px左にスクロールする
     }, 300); //スクロールにかかる時間
 
 });
+
 
 $('.product-change-right').click(function () {
 
@@ -316,11 +398,13 @@ $('.product-change-right').click(function () {
     $(target_product_area).data('selectkinds', next_kinds);    
 
     
+    var target_scroll_box_area = target_product_area + ' .scroll-box';
 
-    var scroll_width = $('.scroll-box').width();
+    var scroll_width = $(target_scroll_box_area).width();
+     
 
-    $('.scroll-box').animate({
-        scrollLeft: $('.scroll-box').scrollLeft() + scroll_width //〇〇px右にスクロールする
+    $(target_scroll_box_area).animate({
+        scrollLeft: $(target_scroll_box_area).scrollLeft() + scroll_width //〇〇px右にスクロールする
     }, 300); //スクロールにかかる時間
 
 });
