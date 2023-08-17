@@ -34,7 +34,6 @@
     display: flex;
     white-space: nowrap;
     overflow-x: hidden;
-    height: 45vh;
 }
 
 
@@ -45,8 +44,7 @@
 }
 
 .product-photo{    
-    /* width: 80%;     */
-    height: 85%;
+    width: 80%;    
 }
 
 

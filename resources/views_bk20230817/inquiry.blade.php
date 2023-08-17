@@ -193,8 +193,9 @@
                     <br>                    
                     （2023年8月時点）
                     <br>
-                    ※離島や特殊配達地域等への発送ご希望の場合は、                    
-                    配達業者にご確認致しますので気軽にお問い合わせください。
+                    ※離島や特殊配達地域等に発送ご希望の場合は、
+                    <br>
+                    ご確認致しますので、気軽にお問い合わせください。
                     
                     
                 </p>
@@ -309,7 +310,13 @@
 
 
     </form>
+
+
     
+
+
+    {{-- <button type="button" id='test' class="btn btn-secondary">問い合わせる</button>                             --}}
+        
 
     {{-- お問い合わせ開始時のモーダル --}}
     <div class="modal fade" id="info_modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="info_modal_label" aria-hidden="true">
@@ -322,14 +329,18 @@
                 </div>
 
               
-                <div class="modal-body">
+                <div class="modal-body">  
                     <div class="modal-body-message-area text-center">  
                         <p class="flowing text-center">お問い合わせ内容を送信中です。</p>
-                    </div>                    
+                    </div>  
+                    
+                   
+                    
                 </div>  
 
                 
-                <div class="modal-footer row">
+                <div class="modal-footer row">  
+
                     <div class="col-6 m-0 p-0 text-end">
                         <button type="button" id="" class="btn btn-secondary info_modal_close" data-bs-dismiss="modal">閉じる</button>
                     </div>  
@@ -356,15 +367,26 @@
 
 <script type="text/javascript">
 
+
+$(document).on("click", "#test", function (e) {
+        // モーダル表示
+        $('#info_modal').modal('show');
+    });
+
+
+
     $(document).on("click", "#send_mail_button", function (e) {
         SendMail();
     });
+
+
 
     function SendMail(){
 
         var judge = true;
 
-        //{{-- メッセージクリア --}}        
+        //{{-- メッセージクリア --}}
+        $('#message_area').html('');
         $('.is-invalid').removeClass('is-invalid');
 
         var question = $("#question").val();        
@@ -397,21 +419,19 @@
         }
 
 
-        // もしキャンセルをクリックしたら
-        if (!confirm('お問い合わせ内容を送信しますか？')) {
-            return false;                
-        }
-
-
-
-
-
         // モーダル表示
         $('#info_modal').modal('show');
         // モーダル閉じるボタンを比活性
         $('.info_modal_close').prop('disabled', true);
-      
+
+        var display_html = '';
+            display_html = '<div class="text-start">';
+            display_html += '<li class="text-start">メール送信中</li>';
+            display_html += '</div>';
+        $('#message_area').html(display_html);
+
         let f = $('#send_mail_form');
+
 
         $.ajax({
             url: f.prop('action'), // 送信先
