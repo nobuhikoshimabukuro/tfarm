@@ -130,6 +130,13 @@
                                 <img src="{{ asset('img/logo/instagram.png') }}" class="instagram_logo" alt="instagram">
                             </a>
                         </li>  
+
+
+                        <button class='cart_logo_btn' data-bs-toggle='modal' data-bs-target='#purchase_modal'>
+                            <img src="{{ asset('img/logo/cart.png') }}" class='cart_logo' alt="cart_logo">
+                        </button>     
+
+
                     </ul>
                 </nav>
             
@@ -153,6 +160,12 @@
             </div>
             <!--△△ヘッダーロゴ△△-->
     
+            <!--▽▽カートロゴ▽▽-->
+            <button class='cart_logo_btn' data-bs-toggle='modal' data-bs-target='#purchase_modal'>
+                <img src="{{ asset('img/logo/cart.png') }}" class='cart_logo' alt="cart_logo">
+            </button>     
+            <!--△△カートロゴ△△-->
+            
             <!--▽▽ハンバーガーメニュー▽▽-->
             <div id="hamburger">                       
                 <div class="icon">
@@ -219,6 +232,42 @@
       
         
     </div>
+
+
+    {{-- 購入案内モーダル --}}
+    <div class="modal fade" id="purchase_modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="purchase_modal_label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">ご購入を検討頂いている方へ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+               
+                <div class="modal-body">
+                    BASEからご購入はお願い致します。
+                    <br>
+
+                    参考:<a href="https://help.thebase.in/hc/ja/articles/115000085522-BASE" target="_blank">
+                        <span style="color: blue">BASEとは
+                        </span>
+                        </a>
+                    <br>
+                    たかすじファーム:<a href="{{ env('base_url')}}" target="_blank">
+                        <span style="color: blue">購入ページ
+                        </span>
+                        </a>
+                    
+                </div>
+
+                <div class="modal-footer">               
+                    <button type="button" id="" class="btn" data-bs-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <!-- ページトップへ戻るボタン -->

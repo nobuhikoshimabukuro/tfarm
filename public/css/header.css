@@ -26,6 +26,18 @@ header .instagram_logo {
     width: 59px;    
 }   
 
+header .cart_logo_btn {
+  border: none;
+  background: transparent;
+  padding: 1px;
+  height: 59px;
+  width: 59px;   
+} 
+
+header .cart_logo {
+  width: 95%;
+}   
+
 
   
   header nav {
@@ -76,9 +88,17 @@ header .instagram_logo {
 
     header #hamburger {
       background-color: transparent;
-      position: relative;
+      /* old */
+      /* position: relative; */
+      /* margin: 0 0 0 auto; */
+
+      /* new */      
+      position: absolute;
+      right: 0;
+
+
       cursor: pointer;
-      margin: 0 0 0 auto;
+      
       height: 60px;
       width: 60px;
     }
@@ -153,6 +173,21 @@ header .instagram_logo {
         height: 58px;
         width: 58px;
         
+    }   
+
+    header .cart_logo_btn {
+      border: none;
+      background: transparent;
+      padding: 0 10px;
+      height: 59px;
+      width: 59px;   
+      position: absolute;
+      right: 60px;
+
+    } 
+    
+    header .cart_logo {
+      width: 95%;
     }   
 
     header .product_logo {
