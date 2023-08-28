@@ -27,41 +27,38 @@
 
 <style>
 
-/* ページトップへ戻るボタン */
-/* .page-top {
-  display: none;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  padding: 20px 10px;
-  border-radius: 8px;
-  background-color: rgba(153, 153, 153, 0.9);
-  color: #fff;
-  cursor: pointer;
-} */
 
-.page-top {
-  display: none;/* 非表示 */
-  position: fixed;/* ページ右下に固定 */
-  right: 0;
-  bottom: 0;  
-  /*1色パターン：border-rightだけに色指定*/
-  border-top: 50px solid transparent;
-  border-right: 50px solid #f6da69;
-  cursor: pointer;/* カーソルをポインターに */
+.pagetop {
+    display: none;/* 非表示 */
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    right: 1vh;
+    bottom: 1vh;
+    background-color:rgb(89,240, 250) ;
+    opacity: 0.6;
+    /* border: solid 1px #000;
+    border-radius: 50%; */
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
 }
+
+
 /* activeクラスが付与されたとき */
-.page-top.active {
-  display: block;
-}
-/* ホバーしたとき */
-.page-top:hover {
-  opacity: 0.8;
-  transition: 0.3s;
+.pagetop.active {
+    display: flex;
 }
 
 
-
+.pagetop__arrow {
+    height: 10px;
+    width: 10px;
+    border-top: 3px solid #f5f7f9;
+    border-right: 3px solid#f5f7f9;
+    transform: translateY(20%) rotate(-45deg);
+}
 </style>
 
 <body>
@@ -271,9 +268,8 @@
 
 
     <!-- ページトップへ戻るボタン -->
-    {{-- <div class="page-top"> --}}
-        <a href="#" class="page-top">            
-         </a>
+    {{-- <div id="page_top"><a href="#"></a></div> --}}
+    <a class="pagetop" href="#"><div class="pagetop__arrow"></div></a>
     {{-- </div> --}}
   
     
@@ -299,10 +295,10 @@
   });
 
   $(window).on('scroll', function() {//スクロールしたとき、
-    if ($(this).scrollTop() > 500) { //スクロール量が500px以上なら、
-        $('.page-top').addClass('active');    //activeクラスを付与し、
+    if ($(this).scrollTop() > 100) { //スクロール量が500px以上なら、
+        $('.pagetop').addClass('active');    //activeクラスを付与し、
     } else {                         //500px未満なら、
-        $('.page-top').removeClass('active'); //activeクラスを外します。
+        $('.pagetop').removeClass('active'); //activeクラスを外します。
     }
   });
 
