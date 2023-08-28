@@ -9,27 +9,6 @@
 <style>
 
 
-
-
-
-
-.fixed-area{
-    width:100px;
-    height:100px;
-    position:fixed;
-    right:0;
-    bottom:0;
-    /* background-color: rgba(241, 182, 225, 0.3); */
-    background-color:none;
-    color:white;
-}
-
-
-
-
-
-
-
 .scroll-box {
     display: flex;
     white-space: nowrap;
@@ -38,13 +17,12 @@
 
 
 .product-photo-area{    
-    height: 45vh;
+    height: 50vh;
     padding: 1vh;
     max-width: 100%;
     min-width: 100%;
 
-/* 画像上下中央ぞろえ */
-    display: flex;
+    display: flex;  /* 画像上下中央ぞろえ */
     justify-content: center;
     align-items: center;
 
@@ -54,11 +32,6 @@
     width: 90%;    
     height: 90%;    
 }
-
-
-
-
-
 
 
 .product-change-btn {
@@ -78,8 +51,6 @@
 }
 
 
-
-
 #base_area{
     height: 100vh;
 }
@@ -90,31 +61,9 @@
 
 <div id="main" class="mt-3 text-center container">
 
-
-    {{-- <div class="fixed-area row">            
-
-        <button class='' data-bs-toggle='modal' data-bs-target='#info_modal'> 
-            <i class="fas fa-shopping-cart"></i>
-        </button>
-        
-    </div> --}}
-
-
-
-    <div class="row">            
-
-       
-        
-            
-            
-        
-    </div>
-
     @php
         $index = 0;
     @endphp
-
-
 
     @php
         $index = $index + 1;
