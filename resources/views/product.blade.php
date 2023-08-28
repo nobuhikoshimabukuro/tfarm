@@ -39,14 +39,15 @@
 
 
 .product-photo-area{    
+    height: 45vh;
     padding: 1vh;
     max-width: 100%;
     min-width: 100%;
 }
 
 .product-photo{    
-    width: 85%;    
-    /* height: 85%; */
+    /* width: 85%;     */
+    height: 60%;
 }
 
 
@@ -74,6 +75,11 @@
 
 
 
+#base_area{
+    height: 100vh;
+}
+
+
 
 </style>
 
@@ -99,11 +105,14 @@
         
     </div>
 
+    @php
+        $index = 0;
+    @endphp
 
 
 
     @php
-        $index = 1;
+        $index = $index + 1;
         $photo_name_array = array("栽培中のマンゴー", "箱詰めされたマンゴー", "おいそうなマンゴー");
     @endphp
 
@@ -124,7 +133,7 @@
                 data-leftbtn=''
                 data-rightbtn='{{$photo_name_array[1]}}'
                 >
-                    <h2>{{ $photo_name_array[0] }}</h2>
+                    {{-- <h2>{{ $photo_name_array[0] }}</h2> --}}
                     <img src="{{ asset('img/product/applemango/0001.jpg') }}" class="product-photo" alt="{{ $photo_name_array[0] }}"> 
                 </div>
 
@@ -132,7 +141,7 @@
                 data-leftbtn='{{$photo_name_array[0]}}'
                 data-rightbtn='{{$photo_name_array[2]}}'
                 >
-                    <h2>{{ $photo_name_array[1] }}</h2>
+                    {{-- <h2>{{ $photo_name_array[1] }}</h2> --}}
                     <img src="{{ asset('img/product/applemango/0002.jpg') }}" class="product-photo" alt="{{ $photo_name_array[1] }}"> 
                 </div>       
 
@@ -140,7 +149,7 @@
                 data-leftbtn='{{$photo_name_array[1]}}'
                 data-rightbtn=''
                 >
-                    <h2>{{ $photo_name_array[2] }}</h2>
+                    {{-- <h2>{{ $photo_name_array[2] }}</h2> --}}
                     <img src="{{ asset('img/product/applemango/0003.jpg') }}" class="product-photo" alt="{{ $photo_name_array[2] }}"> 
                 </div>       
 
@@ -190,7 +199,7 @@
 
 
     @php
-        $index = 2;
+        $index = $index + 1;
         $photo_name_array = array("箱詰めキーツマンゴー", "おいしそうなキーツマンゴー");
     @endphp
 
@@ -265,6 +274,22 @@
 
 
 
+
+
+
+
+
+
+
+
+    <div id="base_area" class="row m-0 p-0">
+
+        <iframe 
+            src="{{ env('base_url')}}"
+        ></iframe>
+
+
+    </div>
 
 
 
