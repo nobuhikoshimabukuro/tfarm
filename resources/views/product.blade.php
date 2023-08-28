@@ -33,8 +33,7 @@
 .scroll-box {
     display: flex;
     white-space: nowrap;
-    overflow-x: hidden;
-    /* height: 45vh; */
+    overflow-x: hidden;    
 }
 
 
@@ -43,11 +42,17 @@
     padding: 1vh;
     max-width: 100%;
     min-width: 100%;
+
+/* 画像上下中央ぞろえ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .product-photo{    
-    /* width: 85%;     */
-    height: 60%;
+    width: 90%;    
+    height: 90%;    
 }
 
 
@@ -132,7 +137,7 @@
 
                 <div class="product-photo-area kinds-1"
                 data-leftbtn=''
-                data-rightbtn='{{$photo_name_array[1]}}'
+                data-rightbtn='{{$photo_name_array[1]}}'                
                 >
                     {{-- <h2>{{ $photo_name_array[0] }}</h2> --}}
                     <img src="{{ asset('img/product/applemango/0001.jpg') }}" class="product-photo" alt="{{ $photo_name_array[0] }}"> 
@@ -140,7 +145,7 @@
 
                 <div class="product-photo-area kinds-2"
                 data-leftbtn='{{$photo_name_array[0]}}'
-                data-rightbtn='{{$photo_name_array[2]}}'
+                data-rightbtn='{{$photo_name_array[2]}}'                
                 >
                     {{-- <h2>{{ $photo_name_array[1] }}</h2> --}}
                     <img src="{{ asset('img/product/applemango/0002.jpg') }}" class="product-photo" alt="{{ $photo_name_array[1] }}"> 
@@ -148,7 +153,7 @@
 
                 <div class="product-photo-area kinds-3"
                 data-leftbtn='{{$photo_name_array[1]}}'
-                data-rightbtn=''
+                data-rightbtn=''                
                 >
                     {{-- <h2>{{ $photo_name_array[2] }}</h2> --}}
                     <img src="{{ asset('img/product/applemango/0003.jpg') }}" class="product-photo" alt="{{ $photo_name_array[2] }}"> 
@@ -283,7 +288,7 @@
 
 
 
-    <div id="base_area" class="row m-0 p-0">
+    {{-- <div id="base_area" class="row m-0 p-0">
 
         <iframe 
             src="{{ env('base_url')}}"
@@ -291,7 +296,7 @@
 
 
     </div>
-
+ --}}
 
 
 
