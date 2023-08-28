@@ -113,7 +113,8 @@
 
     @php
         $index = $index + 1;
-        $photo_name_array = array("栽培中のマンゴー", "箱詰めされたマンゴー", "おいそうなマンゴー");
+        // $photo_name_array = array("栽培中のマンゴー", "箱詰めされたマンゴー", "おいそうなマンゴー");
+        $photo_name_array = array("1", "2", "3");
     @endphp
 
     <div id="product{{$index}}" class="product-area row" data-selectkinds='1'>
@@ -200,7 +201,7 @@
 
     @php
         $index = $index + 1;
-        $photo_name_array = array("箱詰めキーツマンゴー", "おいしそうなキーツマンゴー");
+        $photo_name_array = array("1", "2");
     @endphp
 
     <div id="product{{$index}}" class="product-area row" data-selectkinds='1'>
