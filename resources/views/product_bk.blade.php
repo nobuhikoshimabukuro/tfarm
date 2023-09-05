@@ -342,7 +342,43 @@ img {
     </div>
 
 
-   
+
+
+    
+
+
+
+
+
+
+    <div class="modal fade" id="info_modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="info_modal_label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-fluid">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="info_modal_label"><span id="info_modal_title"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+              
+                <div class="modal-body">  
+
+                    <a href="{{ env('base_url')}}" target="_blank">BASEへ</a>
+                </div>  
+
+                
+                <div class="modal-footer row">  
+
+                    <div class="col-6 m-0 p-0 text-end">
+                        <button type="button" id="" class="original_button close_modal_button" data-bs-dismiss="modal">閉じる</button>
+                    </div>  
+                </div>  
+
+            </div>
+        </div>
+    </div>
+
+    
 </div>
 
 
@@ -408,13 +444,13 @@ $('.product-change-btn').click(function () {
 
         $(target_scroll_box_area).animate({
             scrollLeft: $(target_scroll_box_area).scrollLeft() - scroll_width //〇〇px左にスクロールする
-        }, 200); //スクロールにかかる時間
+        }, 300); //スクロールにかかる時間
 
     }else{
 
         $(target_scroll_box_area).animate({
             scrollLeft: $(target_scroll_box_area).scrollLeft() + scroll_width //〇〇px右にスクロールする
-        }, 200); //スクロールにかかる時間
+        }, 300); //スクロールにかかる時間
 
     }
 

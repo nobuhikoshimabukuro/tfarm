@@ -59,6 +59,21 @@
     border-right: 3px solid#f5f7f9;
     transform: translateY(20%) rotate(-45deg);
 }
+
+
+#purchase_modal .modal-header{
+    background-color: rgb(244, 253, 232)
+}
+
+#purchase_modal .modal-body{
+    background-color: rgb(240, 250, 235)
+}
+
+#purchase_modal .modal-footer{
+    background-color: rgb(244, 253, 232)
+}
+
+
 </style>
 
 <body>
@@ -242,18 +257,26 @@
                 </div>
                
                 <div class="modal-body">
-                    BASEからご購入はお願い致します。
+
+                    <p>
+                        BASEにて販売をしております。
+                    </p>
+
                     <br>
 
-                    参考:<a href="https://help.thebase.in/hc/ja/articles/115000085522-BASE" target="_blank">
+                    <p>
+                        <a href="https://help.thebase.in/hc/ja/articles/115000085522-BASE" target="_blank">
                         <span style="color: blue">BASEとは
                         </span>
                         </a>
+                    </p>
+
                     <br>
-                    たかすじファーム:<a href="{{ env('base_url')}}" target="_blank">
-                        <span style="color: blue">購入ページ
+                    <p><a href="{{ env('base_url')}}" target="_blank">
+                        <span style="color: blue">たかすじファーム購入ページ
                         </span>
                         </a>
+                    </p>
                     
                 </div>
 

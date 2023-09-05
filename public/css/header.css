@@ -7,10 +7,8 @@ https://hakenblog.com/hamburger-menu/
 header {
     height: 60px;
     width: 100%;
-    padding: 0px 15px;
-    /* background-color: rgba(34, 49, 52, 0.9); */
-    background-color:rgb(243, 253, 215, 0.8);    
-    /* background-color: rgba(233, 247, 112, 0.9); */
+    padding: 0px 15px;    
+    background-color:rgb(252, 252, 238);        
     position: fixed;
     top: 0;
     z-index: 10;
