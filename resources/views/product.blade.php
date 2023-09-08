@@ -8,67 +8,14 @@
 
 <style>
 
-
-.scroll-box {
-    display: flex;
-    white-space: nowrap;
-    overflow-x: hidden;        
-}
-
-
-
-.product-photo-area{    
-    height: 50vh;
-    padding: 1vh;
-    max-width: 100%;
-    min-width: 100%;
-
-    display: flex;  /* 画像上下中央ぞろえ */
-    justify-content: center;
-    align-items: center;
-
+.product-area{  
+  margin-bottom: 1vh;
+  background-color:white;
 }
 
 .product-photo{    
-    width: 90%;    
-    height: 90%;    
-}
-
-
-
-
-.product-change-btn {
-    /* color: #fff;
-    background-color: #eb6100;
-    margin: 0 2vh;
-    border-bottom: 5px solid #b84c00;
-    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-    box-shadow: 0 3px 5px rgba(0, 0, 0, .3); */
-
-    border: none;
-    background: transparent;
-    margin: 0 7vw;
-    padding: 0;
-}
-
-.product-change-btn:hover {
- 
-    
-}
-
-.arrow-btn{
-    font-size: 20px;
-    font-weight: 600;
-    color: blue;
-}
-
-
-.arrow-btn-area{
-    margin-top: -10px;
-}
-
-.product-area{  
-  margin-bottom: 1vh;
+    width: 95%;    
+    height: 95%;    
 }
 
 .product-name-area{
@@ -79,7 +26,90 @@
   margin: 0;
   margin-top: 5px;
   padding: 0.5vh 0;
-  color: #3b2525
+  color: #3b2525;
+
+  display: inline-block;
+}
+
+.test{
+    width: 90%;
+    /* background-color: red; */
+    justify-content: center;     
+    margin-left: 5%;
+}
+
+
+
+.main-photo-area{     
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;  
+}
+
+.photo-select-area{   
+   overflow-x:scroll;     
+   /* overflow-x:none;     */
+}
+
+.photo-select-scroll-area{   
+    object-fit: contain;
+    display: flex; 
+    /* justify-content: center; */
+}
+
+
+.sub-photo-div {  
+  min-width:14vh; 
+  max-width:14vh; 
+  max-height:10vh; 
+  min-height:10vh;  
+  padding: 1px; 
+  
+  
+}
+
+
+.photo_button {
+    width:100%;    
+    height:100%;
+    border: none;
+    background: transparent;
+}
+
+.sub-photo{     
+    width:95%;    
+    height:95%;
+    object-fit: contain;
+    
+}
+
+
+.select-border{
+    border: 2px solid rgb(207, 114, 243);
+}
+
+.none-select-border{
+    border: 2px solid rgb(241, 233, 193);
+}
+
+.scroll-btn-area{
+    /* background-color: crimson; */
+}
+
+
+
+.scroll-btn{
+    height: 100%;
+    width: 100%;
+    border: none;
+    background: transparent;
+}
+
+.arrow_logo{
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(207, 114, 243);
 }
 
 
@@ -87,7 +117,6 @@
   text-align: left;
   padding: 0 1vh;
 }
-
 
 .product-explanation{
   text-align: left;
@@ -97,19 +126,6 @@
 }
 
 
-
-#base_area{
-    height: 100vh;
-}
-
-img {
-    border-radius: 30px;
-}
-
-.product-area{        
-    background-color:white;
-}
-
 @media (max-width: 768px) {
 
 .product-area{    
@@ -118,6 +134,13 @@ img {
     border-radius: 5px;
 }
 
+    .scroll-btn-area{
+            display:none;
+    }
+
+    .main-photo-area img {
+        /* border-radius: 30px; */
+    }
 }
 
 @media (min-width: 768px) {
@@ -128,7 +151,23 @@ img {
         border-radius: 30px;
     }
 
+    .main-photo-area img {
+        border-radius: 30px;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -140,209 +179,151 @@ img {
 
         <div class="col-12 m-0 ">
 
-            {{-- PC --}}
-            <div class="d-none d-md-block w-100">
-                <h3>
-                    沖縄の自然の恵みから生まれた最高のマンゴー
-                </h3>
-            </div>
-            
-            {{-- スマホ --}}
-            <div class="d-block d-md-none w-100">
-                <h3>
-                    沖縄の自然の恵みから<br>生まれた最高のマンゴー
-                </h3>
-            </div>
+                {{-- PC --}}
+                <div class="d-none d-md-block w-100">
+                    <h3>
+                        沖縄の自然の恵みから生まれた最高のマンゴー
+                    </h3>
+                </div>
                 
-        </div>
-        <div class="col-12 col-md-6 m-0 "> 
+                {{-- スマホ --}}
+                <div class="d-block d-md-none w-100">
+                    <h3>
+                        沖縄の自然の恵みから<br>生まれた最高のマンゴー
+                    </h3>
+                </div>
+                    
+            </div>
+
+            <div class="col-12 col-md-6 m-0 "> 
+                
+            </div>
+
+            <div class="col-12 col-md-6 m-0 "> 
+
             
-        </div>
 
-        <div class="col-12 col-md-6 m-0 "> 
-
-        
-
-    </div>
+            </div>
 
 
     </div>
 
 
-
-    @php
-        // 初期値
-        $product_index = 0;
-        $kinds_index = 0;
-    @endphp
-
-    @php
-        $product_index = $product_index + 1;        
-        $photo_name_array = array("1", "2", "3");
-    @endphp
 
     <div id="" class="row m-0 p-0">        
     
-        
+        @foreach($all_product_info_array as $product_info)
 
-        <div id="product{{$product_index}}" class="product-area col-12 col-md-6 m-0 p-0" data-selectkinds='1'>
-        
+            @php
+                $product_id = $product_info["product_id"];
+                $product_name = $product_info["product_name"];
+                $explanation = $product_info["explanation"];
+                $product_info_array = $product_info["product_info_array"];
+            @endphp
+
+
+
+
+            <div id="product{{$product_id}}" class="product-area col-12 col-md-6 m-0 p-0">
+                
                     
-            <div class="product-name-area row m-0 p-0 text-center">
-                <h3 class="product-name">
-                    アップルマンゴー
-                </h3>         
-            </div>    
-                    
-            <div class="col-12 m-0 p-0">
+                <div class="product-name-area row m-0 p-0 text-center underline">
+                    <div class="test">
+                        <h3 class="product-name">
+                            {{$product_name}}
+                        </h3>
+                    </div>         
+                </div>    
 
-                <div class="scroll-box">
 
-                    <div class="product-photo-area kinds-{{++$kinds_index}}">
-                        <img src="{{ asset('img/product/applemango/0001.jpg') }}" class="product-photo" alt=""> 
-                    </div>
+                <div class="col-12 m-0 p-0">     
 
-                    <div class="product-photo-area kinds-{{++$kinds_index}}">
-                        <img src="{{ asset('img/product/applemango/0002.jpg') }}" class="product-photo" alt=""> 
+                    <div class="main-photo-area">                
+                        <img src='{{$product_info_array[0]["asset_path"]}}' class="product-photo" alt="{{$product_info_array[0]["file_name"]}}">                                    
                     </div>       
 
-                    <div class="product-photo-area kinds-{{++$kinds_index}}">
-                        <img src="{{ asset('img/product/applemango/0003.jpg') }}" class="product-photo" alt=""> 
-                    </div>       
-                 
-                </div>       
+                    
+                    <div class="row">
 
-                <div class="row m-0 p-0 arrow-btn-area">
+                        <div class="col-1 m-0 p-0">   
+                            
+                        </div>       
+                        
+                        <div class="col-1 m-0 p-0 scroll-btn-area">   
+                            <button class="scroll-btn"
+                            data-direction='1'
+                            data-productid="{{$product_id}}" 
+                            >
+                                    <i class="fas fa-angle-double-left arrow_logo"></i>
+                            </button>                      
+                        </div>       
 
-                    <div class="col-6 m-0 p-0 text-end">                 
-                       
-                        <button class="product-change-btn direction-1 d-none"
-                        data-targetproduct='{{$product_index}}'                    
-                        data-direction='1'
-                        >
-                            <i class="fas fa-angle-double-left arrow-btn"></i>
-                        </button>   
+                        <div class="photo-select-area col-10 col-md-8 m-0 p-0">
+
+                            <div class="photo-select-scroll-area m-0 p-0">
+
+                                
+                                @foreach ($product_info_array as $index => $info)
+
+                                    <div id='' class="sub-photo-div">                                                
+                                        <button type="button" id="" class="photo_button m-0 p-0"                         
+                                        data-productid="{{$product_id}}" 
+                                        data-kinds="{{$index}}" 
+                                        data-targetpath="{{ $info["asset_path"] }}" 
+                                        data-filename="{{ $info["file_name"] }}" 
+                                        >
+                                            
+                                                <img src="{{ $info["asset_path"] }}" 
+                                                @if($index == 0) photo_select 
+                                                    class="sub-photo kinds{{$index}} select-border" 
+                                                @else
+                                                    class="sub-photo kinds{{$index}} none-select-border" 
+                                                @endif
+                                                
+                                                alt="{{ $info["file_name"] }}">
+                                            
+                                        </button>
+                                    </div>
+
+                                @endforeach		
+                            
+
+                            </div>                        
+
+                        </div>
+                        
+                        <div class="col-1 scroll-btn-area m-0 p-0">   
+                            <button class="scroll-btn"
+                            data-direction='2'
+                            data-productid="{{$product_id}}" 
+                            >
+                                <i class="fas fa-angle-double-right arrow_logo"></i>
+                            </button>                      
+                        </div>   
+
+                        <div class="col-1 m-0 p-0">   
+                            
+                        </div>       
+
                     </div>
 
-                    <div class="col-6 m-0 p-0 text-start" >                      
-                        
-                        <button class="product-change-btn direction-2"
-                        data-targetproduct='{{$product_index}}'                    
-                        data-direction='2'
-                        >
-                            <i class="fas fa-angle-double-right arrow-btn"></i>
-                        </button>   
-                        
-                    </div>
-
-
+                    
                 </div>
 
-                <input type="hidden" id='product{{$product_index}}_kinds_count' value={{$kinds_index}}>
-            </div>
-        
-            <div class="product-explanation-area col-12 m-0">
-                <p class="product-explanation">
-                    アップルマンゴーとは、熟すと果皮がリンゴのように真っ赤になるマンゴーを総称して「アップルマンゴー」と呼びます。 
-                    そして、アップルマンゴーの代表的な品種が「アーウィン種」で、
-                    果皮が赤くなるマンゴーの種類もいろいろあります。
-                    日本国内の栽培は、96.5%がアーウィン種と言われているほど日本でポピュラーな品種です。
-                </p>
-            </div>
 
-        
-        
+                
+                <div class="product-explanation-area col-12 m-0">
+                    <p class="product-explanation">
+                        {{$explanation}}                        
+                    </p>
+                </div>
+
+            </div>
+		
+		@endforeach		
 
     </div>
 
-
-    
-
-        {{-- 製品紹介を増やす場合は以下をコピー --}}
-    
-        {{-- コピースタート地点 --}}
-
-
-        @php
-            $product_index = $product_index + 1;
-            $kinds_index = 0;
-            $photo_name_array = array("1", "2");
-        @endphp
-
-        
-        <div id="product{{$product_index}}" class="product-area col-12 col-md-6 m-0 p-0" data-selectkinds='1'>
-        
-            
-            <div class="product-name-area row m-0 p-0 text-center">
-                <h3 class="product-name">
-                    キーツマンゴー
-                </h3>         
-            </div>    
-
-
-            <div class="col-12 m-0 p-0">     
-
-                <div class="scroll-box">
-
-                    <div class="product-photo-area kinds-{{++$kinds_index}}">
-                        <img src="{{ asset('img/product/keatsmango/0001.jpg') }}" class="product-photo" alt=""> 
-                    </div>               
-
-                    <div class="product-photo-area kinds-{{++$kinds_index}}">                    
-                        <img src="{{ asset('img/product/keatsmango/0002.jpg') }}" class="product-photo" alt=""> 
-                    </div>       
-
-                </div>       
-
-                <div class="row m-0 p-0 arrow-btn-area">
-
-                    <div class="col-6 m-0 p-0 text-end">                 
-                       
-                        <button class="product-change-btn direction-1 d-none"
-                        data-targetproduct='{{$product_index}}'                    
-                        data-direction='1'
-                        >
-                            <i class="fas fa-angle-double-left arrow-btn"></i>
-                        </button>   
-                    </div>
-
-                    <div class="col-6 m-0 p-0 text-start" >                      
-                        
-                        <button class="product-change-btn direction-2"
-                        data-targetproduct='{{$product_index}}'                    
-                        data-direction='2'
-                        >
-                            <i class="fas fa-angle-double-right arrow-btn"></i>
-                        </button>   
-                        
-                    </div>
-
-
-                </div>
-
-                <input type="hidden" id='product{{$product_index}}_kinds_count' value={{$kinds_index}}>
-            </div>
-
-
-            
-            <div class="product-explanation-area col-12 m-0">
-                <p class="product-explanation">
-                    キーツマンゴーとは、マンゴーの品種のなかのひとつで、
-                    収穫量が少なく市場にあまり出回らないことから「幻のマンゴー」や「マンゴーの王様」と呼ばれている。 
-                    アップルマンゴーよりも糖度が高くなることもある幻のマンゴー。 夏の贅沢として一度は食べてほしい。            
-                    
-                </p>
-            </div>
-
-        </div>
-    
-
-        {{-- コピーゴール地点 --}}
-
-    </div>
-
-
-   
 </div>
 
 
@@ -359,68 +340,129 @@ img {
 
 <script type="text/javascript">
 
-$('.product-change-btn').click(function () {
+    $(document).ready(function(){
+        scroll_btn_change();      
+    });
 
-    //商品のindex取得
-    var target_product = $(this).data('targetproduct');
+    // 画面幅が変更されたときに実行させたい処理内容
+    $(window).resize(function(){ 
+        scroll_btn_change();        
+    });
 
-    //左右の値(左 = 1 :: 右 = 2)
-    var direction = $(this).data('direction');
+    function scroll_btn_change(){
 
-    //商品のid
-    var target_product_area = "#product" + target_product;    
+        var i = 1;
+        while(true){
 
-    //商品のidから現在選択されている写真Noを取得
-    var select_kinds = $(target_product_area).data('selectkinds');
+            var product_area = "#product" + i;
+            //製品情報の表示があるかチェック            
+            if(!($(product_area).length)){				
+                break;							
+            }
+           
+            //各クラスの宣言
+            var photo_select_area_class = product_area + " .photo-select-area";
+            var sub_photo_class = product_area + " .sub-photo-div";
+            var scroll_btn_class = product_area + " .scroll-btn";
 
-    //次の写真Noをセット
-    if(direction == 1){
-        var next_select_kinds = select_kinds - 1;
-    }else{
-        var next_select_kinds = select_kinds + 1;
-    }
+            //写真1枚あたりの横幅取得
+            var sub_photo_width = $(sub_photo_class).width();
 
-    //画像総数を取得
-    var kinds_count = $(target_product_area + '_kinds_count').val();
+            //写真数取得
+            var photo_count = $(sub_photo_class).length;
 
-    //商品下部の左右ボタンの可視化
-    $(target_product_area + " .product-change-btn").removeClass("d-none");
+            //写真幅*写真数で横幅取得
+            var all_width = sub_photo_width * photo_count;
 
+            //スクロール可能エリアの横幅取得
+            var select_area_width = $(photo_select_area_class).width();
+            
 
-    if(0 >= next_select_kinds - 1){
-        //左ボタンを消す
-        $(target_product_area + " .direction-1").addClass("d-none");
-    }
+            //スクロールボタンを一度不可視
+            $(scroll_btn_class).addClass('d-none');
 
-    if(kinds_count < next_select_kinds + 1){
-        //右ボタンを消す
-        $(target_product_area + " .direction-2").addClass("d-none");
-    }
-
-
-    $(target_product_area).data('selectkinds', next_select_kinds);    
-
-    var target_scroll_box_area = target_product_area + ' .scroll-box';
-
-    var scroll_width = $(target_scroll_box_area).width();    
-
-    if(direction == 1){
-
-        $(target_scroll_box_area).animate({
-            scrollLeft: $(target_scroll_box_area).scrollLeft() - scroll_width //〇〇px左にスクロールする
-        }, 200); //スクロールにかかる時間
-
-    }else{
-
-        $(target_scroll_box_area).animate({
-            scrollLeft: $(target_scroll_box_area).scrollLeft() + scroll_width //〇〇px右にスクロールする
-        }, 200); //スクロールにかかる時間
-
+            if(select_area_width < all_width){
+                //スクロール可能エリアより写真総横幅が超えた場合スクロールボタンを可視化
+                $(scroll_btn_class).removeClass('d-none');
+            }
+           
+            i++;
+        }
+  
+           
     }
 
 
+    $(".photo_button").on('click',function(e){
+        
+        
+        var targetpath = $(this).data('targetpath');
+        var productid = $(this).data('productid');
+        var kinds = $(this).data('kinds');
+        var file_name = $(this).data('filename');
+        
+        
 
-});
+        $('#product'+ productid + ' .sub-photo').removeClass('select-border');
+        $('#product'+ productid + ' .sub-photo').removeClass('none-select-border');      
+
+
+        $('#product'+ productid + ' .sub-photo').addClass('none-select-border');
+
+        $('#product'+ productid + ' .kinds' + kinds).removeClass('none-select-border');      
+        $('#product'+ productid + ' .kinds' + kinds).addClass('select-border');  
+        
+        
+        
+        $('#product'+ productid + ' .main-photo-area').empty();
+
+        var Element = "";
+
+        Element +="<img id=''class='product-photo' src='" + targetpath + "' alt='" + file_name + "'>";
+
+        
+        $('#product'+ productid + ' .main-photo-area').append(Element);           
+       
+
+    });
+
+
+
+
+    $('.scroll-btn').click(function () {
+
+        var productid = $(this).data('productid');
+
+
+        //左右の値(左 = 1 :: 右 = 2)
+        var direction = $(this).data('direction');
+
+        var scroll_area = '#product' + productid + ' .photo-select-area';
+
+        var scroll_range = 250;
+       
+
+        if(direction == 1){
+
+            $(scroll_area).animate({
+                scrollLeft: $(scroll_area).scrollLeft() - scroll_range //〇〇px左にスクロールする
+            }, 300); //スクロールにかかる時間
+
+        }else{
+
+            $(scroll_area).animate({
+                scrollLeft: $(scroll_area).scrollLeft() + scroll_range //〇〇px右にスクロールする
+            }, 300); //スクロールにかかる時間
+
+        }
+
+
+
+      
+
+
+    });
+
 
 </script>
 

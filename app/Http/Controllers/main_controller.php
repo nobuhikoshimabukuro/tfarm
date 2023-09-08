@@ -33,7 +33,103 @@ class main_controller extends Controller
             session()->flash('desired_url', $desired_url);
             return redirect()->route('password_check');    
         }
-        return view('product');
+
+
+
+        $Files = array(
+        "Result" => "qr_ticket_error",
+        "Message" => '',
+        );   
+
+
+
+        $all_product_info_array = array();
+                
+        $product_id = 1;
+
+        while(true){ 
+                    
+            $product_info_array = array();
+            $files = array();
+
+            $path = public_path('img/product/'. $product_id .'/'.'*.*');
+        
+            $files = glob($path);
+
+            $explanation = "";
+            $product_name = "";
+
+            if(count($files) == 0){
+
+                //繰返しの強制終了
+                break; 
+            }
+
+            foreach ($files as $file_path){
+
+                $file = pathinfo($file_path);            
+                $extension = $file['extension'];
+                $base_name = $file['basename'];
+                $file_name = $file['filename'];
+
+                if($extension == 'txt'){
+
+                    if($file_name == 'explanation'){
+                        
+                        $explanation = file_get_contents($file_path);
+                        $explanation = mb_convert_encoding($explanation, 'UTF-8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS,SJIS-win');
+                    }else{
+
+                        $product_name = file_get_contents($file_path);
+                        $product_name = mb_convert_encoding($product_name, 'UTF-8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS,SJIS-win');                        
+                    }                    
+
+                }else{
+
+                    $asset_path = asset('img/product/' .$product_id. '/' . $base_name);                    
+                    $info = array('asset_path' => $asset_path , 'file_name' => $file_name);
+                    array_push($product_info_array, $info);
+
+                }
+    
+                
+            }
+
+
+            if(count($product_info_array) > 0){
+               
+                //配列にアップロードファイルパスとファイル名を格納            
+                $info_array = array('product_id' => $product_id , 'product_name' => $product_name , 'explanation' => $explanation , 'product_info_array' => $product_info_array);
+                array_push($all_product_info_array, $info_array);
+            }
+
+            $product_id++;
+        }
+        
+  
+        $a = $all_product_info_array;
+
+
+        // foreach ($all_product_info_array as $product_info) {
+        //     $product_id = $product_info["product_id"];
+        //     $product_name = $product_info["product_name"];
+        //     $explanation = $product_info["explanation"];
+        //     $product_info_array = $product_info["product_info_array"];
+
+        //     $test = $product_info_array[0]["asset_path"];
+
+        //     foreach ($product_info_array as $product_info) {
+        //         $product_id = $product_info["product_id"];
+        //         $product_name = $product_info["product_name"];
+        //         $explanation = $product_info["explanation"];
+        //         $product_info_array = $product_info["product_info_array"];
+    
+        //         $test = $product_info_array[0]["asset_path"];
+        //     }
+        // }
+        
+
+        return view('product', compact('all_product_info_array'));        
     }
 
     
