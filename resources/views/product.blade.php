@@ -10,7 +10,14 @@
 
 .product-area{  
   margin-bottom: 1vh;
-  background-color:white;
+  padding: 1vh;  
+}
+
+.product-inner-area{  
+    background-color: rgb(248, 248, 242);
+    border: 0.5px solid rgb(248, 248, 215); 
+    border-radius: 10px;
+    height: 100%;
 }
 
 .product-photo{    
@@ -22,21 +29,14 @@
   /* background: linear-gradient(70deg, rgb(250, 222, 227), rgb(252, 224, 229)); */
 }
 
+
 .product-name{
-  margin: 0;
-  margin-top: 5px;
+  margin: 0;  
   padding: 0.5vh 0;
   color: #3b2525;
-
-  display: inline-block;
 }
 
-.test{
-    width: 90%;
-    /* background-color: red; */
-    justify-content: center;     
-    margin-left: 5%;
-}
+
 
 
 
@@ -60,14 +60,15 @@
 
 
 .sub-photo-div {  
-  min-width:14vh; 
-  max-width:14vh; 
-  max-height:10vh; 
-  min-height:10vh;  
-  padding: 1px; 
-  
-  
+    min-width:14vh; 
+    max-width:14vh; 
+    max-height:10vh; 
+    min-height:10vh;  
+    padding: 1px;   
+    
 }
+
+
 
 
 .photo_button {
@@ -80,8 +81,7 @@
 .sub-photo{     
     width:95%;    
     height:95%;
-    object-fit: contain;
-    
+    object-fit: contain;    
 }
 
 
@@ -93,8 +93,7 @@
     border: 2px solid rgb(241, 233, 193);
 }
 
-.scroll-btn-area{
-    /* background-color: crimson; */
+.scroll-btn-area{    
 }
 
 
@@ -126,46 +125,58 @@
 }
 
 
-@media (max-width: 768px) {
-
-.product-area{    
-    outline: 0.5px solid gray;
-    outline-offset: -4px;    
-    border-radius: 5px;
+.arrow-area{
+    display: flex;
+    justify-content: center; /*左右中央揃え*/
+    align-items: center;     /*上下中央揃え*/
 }
 
-    .scroll-btn-area{
-            display:none;
-    }
-
-    .main-photo-area img {
-        /* border-radius: 30px; */
-    }
-}
-
+/* PC用 */
 @media (min-width: 768px) {
 
-    .product-area{    
-        outline: 1px solid gray;
-        outline-offset: -5px;        
-        border-radius: 30px;
-    }
-
     .main-photo-area img {
-        border-radius: 30px;
+        border-radius: 10px;
     }
 
+    .landscape_image {
+        border-radius: 10px;
+    }
+
+    .arrow-area .arrow_logo{
+        display:none;
+    }
+
+    .sub-photo{     
+        opacity: 0.8;    
+    }
+
+    .sub-photo:hover{         
+        opacity: 1;
+}
+    
+}
+
+/* モバイル用 */
+@media (max-width: 768px) {
+
+    .scroll-btn-area{
+        display:none;
+    }    
+
+    .arrow-area .arrow_logo{
+        font-size: 20px;        
+        opacity: 0.4;
+    }   
 }
 
 
 
 
 
-
-
-
-
-
+.test{
+    /* background-color: rgba(247, 230, 242, 0.5); */
+    text-decoration:underline;
+}
 
 
 
@@ -175,42 +186,16 @@
 
 <div id="main" class="mt-3 text-center container">
 
-    <div id="" class="row">
-
+   
+    <div id="" class="row m-0 p-0">   
+        
         <div class="col-12 m-0 ">
 
-                {{-- PC --}}
-                <div class="d-none d-md-block w-100">
-                    <h3>
-                        沖縄の自然の恵みから生まれた最高のマンゴー
-                    </h3>
-                </div>
+            <h3 class="test text-start">
+                製品紹介
+             </h3>
                 
-                {{-- スマホ --}}
-                <div class="d-block d-md-none w-100">
-                    <h3>
-                        沖縄の自然の恵みから<br>生まれた最高のマンゴー
-                    </h3>
-                </div>
-                    
-            </div>
-
-            <div class="col-12 col-md-6 m-0 "> 
-                
-            </div>
-
-            <div class="col-12 col-md-6 m-0 "> 
-
-            
-
-            </div>
-
-
-    </div>
-
-
-
-    <div id="" class="row m-0 p-0">        
+        </div>
     
         @foreach($all_product_info_array as $product_info)
 
@@ -224,103 +209,110 @@
 
 
 
-            <div id="product{{$product_id}}" class="product-area col-12 col-md-6 m-0 p-0">
-                
+            <div id="product{{$product_id}}" class="product-area col-12 col-md-6 m-0">
+
+                <div id="" class="product-inner-area">
                     
-                <div class="product-name-area row m-0 p-0 text-center underline">
-                    <div class="test">
+                    
+                        
+                    <div class="product-name-area row m-0 p-0 text-center">                        
                         <h3 class="product-name">
                             {{$product_name}}
-                        </h3>
-                    </div>         
-                </div>    
+                        </h3>                        
+                    </div>    
 
 
-                <div class="col-12 m-0 p-0">     
+                    <div class="col-12 m-0 p-0">     
 
-                    <div class="main-photo-area">                
-                        <img src='{{$product_info_array[0]["asset_path"]}}' class="product-photo" alt="{{$product_info_array[0]["file_name"]}}">                                    
-                    </div>       
-
-                    
-                    <div class="row">
-
-                        <div class="col-1 m-0 p-0">   
-                            
+                        <div class="main-photo-area">                
+                            <img src='{{$product_info_array[0]["asset_path"]}}' class="product-photo" alt="{{$product_info_array[0]["file_name"]}}">                                    
                         </div>       
+
                         
-                        <div class="col-1 m-0 p-0 scroll-btn-area">   
-                            <button class="scroll-btn"
-                            data-direction='1'
-                            data-productid="{{$product_id}}" 
-                            >
-                                    <i class="fas fa-angle-double-left arrow_logo"></i>
-                            </button>                      
-                        </div>       
+                        <div class="row">
 
-                        <div class="photo-select-area col-10 col-md-8 m-0 p-0">
-
-                            <div class="photo-select-scroll-area m-0 p-0">
-
-                                
-                                @foreach ($product_info_array as $index => $info)
-
-                                    <div id='' class="sub-photo-div">                                                
-                                        <button type="button" id="" class="photo_button m-0 p-0"                         
-                                        data-productid="{{$product_id}}" 
-                                        data-kinds="{{$index}}" 
-                                        data-targetpath="{{ $info["asset_path"] }}" 
-                                        data-filename="{{ $info["file_name"] }}" 
-                                        >
-                                            
-                                                <img src="{{ $info["asset_path"] }}" 
-                                                @if($index == 0) photo_select 
-                                                    class="sub-photo kinds{{$index}} select-border" 
-                                                @else
-                                                    class="sub-photo kinds{{$index}} none-select-border" 
-                                                @endif
-                                                
-                                                alt="{{ $info["file_name"] }}">
-                                            
-                                        </button>
-                                    </div>
-
-                                @endforeach		
+                            <div class="col-1 m-0 p-0 arrow-area">   
+                                {{-- モバイル用矢印 --}}
+                                <i class="fas fa-angle-double-left arrow_logo"></i>                                
+                            </div>       
                             
+                            <div class="col-1 m-0 p-0 scroll-btn-area">   
+                                <button class="scroll-btn"
+                                data-direction='1'
+                                data-productid="{{$product_id}}" 
+                                >
+                                        <i class="fas fa-angle-double-left arrow_logo"></i>
+                                </button>                      
+                            </div>       
 
-                            </div>                        
+                            <div class="photo-select-area col-10 col-md-8 m-0 p-0">
+
+                                <div class="photo-select-scroll-area m-0 p-0">
+
+                                    
+                                    @foreach ($product_info_array as $index => $info)
+
+                                        <div id='' class="sub-photo-div">                                                
+                                            <button type="button" id="" class="photo_button m-0 p-0"                         
+                                            data-productid="{{$product_id}}" 
+                                            data-kinds="{{$index}}" 
+                                            data-targetpath="{{ $info["asset_path"] }}" 
+                                            data-filename="{{ $info["file_name"] }}" 
+                                            >
+                                                
+                                                    <img src="{{ $info["asset_path"] }}" 
+                                                    @if($index == 0) photo_select 
+                                                        class="sub-photo kinds{{$index}} select-border" 
+                                                    @else
+                                                        class="sub-photo kinds{{$index}} none-select-border" 
+                                                    @endif
+                                                    
+                                                    alt="{{ $info["file_name"] }}">
+                                                
+                                            </button>
+                                        </div>
+
+                                    @endforeach		
+                                
+
+                                </div>                        
+
+                            </div>
+                            
+                            <div class="col-1 scroll-btn-area m-0 p-0">   
+                                <button class="scroll-btn"
+                                data-direction='2'
+                                data-productid="{{$product_id}}" 
+                                >
+                                    <i class="fas fa-angle-double-right arrow_logo"></i>
+                                </button>                      
+                            </div>   
+
+                            <div class="col-1 m-0 p-0 arrow-area">
+                                {{-- モバイル用矢印 --}}
+                                <i class="fas fa-angle-double-right arrow_logo"></i>
+                            </div>       
 
                         </div>
+
                         
-                        <div class="col-1 scroll-btn-area m-0 p-0">   
-                            <button class="scroll-btn"
-                            data-direction='2'
-                            data-productid="{{$product_id}}" 
-                            >
-                                <i class="fas fa-angle-double-right arrow_logo"></i>
-                            </button>                      
-                        </div>   
-
-                        <div class="col-1 m-0 p-0">   
-                            
-                        </div>       
-
                     </div>
 
+
                     
-                </div>
+                    <div class="product-explanation-area col-12 m-0">
+                        <p class="product-explanation">
+                            {{$explanation}}                        
+                        </p>
+                    </div>
 
-
-                
-                <div class="product-explanation-area col-12 m-0">
-                    <p class="product-explanation">
-                        {{$explanation}}                        
-                    </p>
                 </div>
 
             </div>
 		
 		@endforeach		
+
+        
 
     </div>
 
@@ -364,6 +356,7 @@
             var photo_select_area_class = product_area + " .photo-select-area";
             var sub_photo_class = product_area + " .sub-photo-div";
             var scroll_btn_class = product_area + " .scroll-btn";
+            var arrow_area_class = product_area + " .arrow-area .arrow_logo";
 
             //写真1枚あたりの横幅取得
             var sub_photo_width = $(sub_photo_class).width();
@@ -378,12 +371,14 @@
             var select_area_width = $(photo_select_area_class).width();
             
 
-            //スクロールボタンを一度不可視
+            //スクロールボタンとモバイル用矢印を一度不可視
             $(scroll_btn_class).addClass('d-none');
+            $(arrow_area_class).addClass('d-none');
 
             if(select_area_width < all_width){
-                //スクロール可能エリアより写真総横幅が超えた場合スクロールボタンを可視化
+                //スクロール可能エリアより写真総横幅が超えた場合スクロールボタンとモバイル用矢印可視化
                 $(scroll_btn_class).removeClass('d-none');
+                $(arrow_area_class).removeClass('d-none');
             }
            
             i++;
