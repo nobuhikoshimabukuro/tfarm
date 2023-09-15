@@ -91,6 +91,14 @@
     top: 140px;
     right: 230px;
   }
+
+
+  .greeting p{  
+    font-size: 20px;  
+    font-weight: 500;
+  }
+
+
 }
 
 /* モバイル用 */
@@ -119,6 +127,10 @@
     right: 90px;
   }
 
+  .greeting p{  
+    font-size: 18px;  
+  }
+
 }
 
 
@@ -132,15 +144,16 @@
 }
 
 
-.sentence{
+.greeting{
   padding: 1vh;
   background-color: rgba(250, 247, 249, 0.7);
   height: 100%;
 }
 
-.sentence p{
-  
-  color: #021222;
+.greeting p{  
+  font-size: 20px;
+  color: #250f12;
+  /* font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO"; */
 }
 
 
@@ -167,6 +180,14 @@
   );
 }
 
+.underline{
+  border-bottom: dotted 2px blue;
+}
+
+.emphasis{
+  font-weight: 900;
+  color: red;
+}
 
 </style>
 
@@ -248,27 +269,31 @@
         <h4 class="p-0 text-start">ご挨拶</h4>
       </div> 
 
-      <div id="" class="sentence">
+      <div id="" class="greeting">
+
         <p class="text-start">
           こんにちは!!沖縄県宜野座村でマンゴー農家を営んでいるたかすじファームと申します。
           沖縄の自然の力を借り、1つ1つ大切に栽培しております。
           お客様にご満足いただける、安心で美味しいマンゴーをお届けいたします。
-          栽培しているマンゴーは製品紹介ページでご覧ください。
+          <br>
+          栽培しているマンゴーは<a href="{{ route('product') }}" class="underline">製品紹介ページ</a>でご覧ください。
           <br>
           <br>
-          皆様に直接購入して頂けるよう【BASE(ネット販売)】を行っております。
+          皆様に直接購入して頂けるよう<a href="{{env('base_url') }}" class="underline" target="_blank">インターネット販売（BASE）</a>を行っております。
+          <br>          
+          <span class="emphasis">2023年の収穫分は多くのお客様からのご好評によりは完売致しました。
           <br>
-          多くのお客様からのご好評により今年度分は完売致しました。
-          <br>
-          誠にありがとうございました。
+          誠にありがとうございました。</span>
           <br>
           また来年の夏にお客様を笑顔にできるようご準備致しますので、
           どうぞ宜しくお願い致します。
           <br>
-          公式LINE登録にて販売開始等のお知らせを行っております。
+          公式LINEで販売開始等のお知らせを行っております。ご興味がありましたらお友達になってください。
           <br>
-          不定期ではございますが、各SNSで沖縄や農園情報を発信しております。
+          また不定期ではございますが各SNSで沖縄や農園情報を発信しております。
         </p>
+
+
       </div>
 
     </div> 

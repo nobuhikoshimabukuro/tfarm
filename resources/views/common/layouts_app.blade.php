@@ -74,6 +74,15 @@
 }
 
 
+.underline{
+  border-bottom: dotted 2px blue;
+}
+
+.emphasis{
+  font-weight: 900;
+  color: red;
+}
+
 </style>
 
 <body>
@@ -113,6 +122,12 @@
             
                 <nav class="pc">  <!--pcクラスを追記-->
                     <ul>
+
+                        <li>
+                            <a href="{{ route('index') }}">
+                                TOP
+                            </a>
+                        </li>
                         <li>
                             <a href="{{ route('product') }}">
                                 製品紹介
@@ -192,6 +207,14 @@
             <!--▽▽ハンバーガーメニューのリスト▽▽-->
             <nav class="sm">
                 <ul>
+
+                    <li>
+                        <a href="{{ route('index') }}">
+                            <img id="" src="{{ asset('img/logo/0003.jpg') }}" class="product_logo" alt="tf_logo">
+                            TOP
+                        </a>
+                    </li>
+
                     <li>
                         <a href="{{ route('product') }}">
                             <img id="" src="{{ asset('img/logo/0003.jpg') }}" class="product_logo" alt="tf_logo">
@@ -260,23 +283,31 @@
 
                     <p>
                         BASEにて販売をしております。
-                    </p>
-
-                    <br>
-
-                    <p>
-                        <a href="https://help.thebase.in/hc/ja/articles/115000085522-BASE" target="_blank">
-                        <span style="color: blue">BASEとは
+                        <br>
+                        BASEで販売品や料金を確認できます。
+                        <br>
+                        <span class="emphasis">2023年の収穫分は多くのお客様からのご好評によりは完売致しました。
+                        <br>
+                        誠にありがとうございました。
                         </span>
+
+                        <br>
+                        
+                        <br>
+                        <a href="{{ env('base_url')}}" target="_blank" class="underline">
+                            たかすじファーム購入ページ                            
                         </a>
+                        
+                        <br>
+                        <a href="https://help.thebase.in/hc/ja/articles/115000085522-BASE" target="_blank" class="underline">
+                            BASEとは                                
+                        </a>
+
+                       
+
                     </p>
 
-                    <br>
-                    <p><a href="{{ env('base_url')}}" target="_blank">
-                        <span style="color: blue">たかすじファーム購入ページ
-                        </span>
-                        </a>
-                    </p>
+                 
                     
                 </div>
 
