@@ -15,6 +15,8 @@ use App\Http\Controllers\mail_controller;
 |
 */
 
+Route::get('/test', [main_controller::class, 'test'])->name('test');
+
 Route::get('/', [main_controller::class, 'index'])->name('index');
 
 Route::get('/product', [main_controller::class, 'product'])->name('product');

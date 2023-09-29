@@ -13,6 +13,13 @@ use App\Mail\InquiryMail;
 
 class main_controller extends Controller
 {
+
+    function test(Request $request)
+    {       
+     
+        return view('test');
+    }
+
     function index(Request $request)
     {       
         

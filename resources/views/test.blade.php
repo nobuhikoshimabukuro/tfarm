@@ -73,9 +73,6 @@
     </form>
 
     
-    <a href="{{ route('test') }}">                            
-       test
-    </a>
 </div>
 
 
