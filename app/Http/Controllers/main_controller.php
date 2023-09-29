@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Exception;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InquiryMail;
 
@@ -16,7 +16,7 @@ class main_controller extends Controller
 
     function test(Request $request)
     {       
-     
+        Storage::makeDirectory('dir');
         return view('test');
     }
 
