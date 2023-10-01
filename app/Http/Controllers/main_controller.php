@@ -17,7 +17,7 @@ class main_controller extends Controller
     function test(Request $request)
     {       
         // Log::channel('error_log')->info("TEST");
-        Log::info("info ログ!");
+        // Log::info("info ログ!");
 
         // ファイルを書き込みモードで開く
         $file_handle = fopen( storage_path('laravel.txt'), "w");
