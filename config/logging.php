@@ -126,6 +126,15 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        // 追加ログ
+        'error_log' => [
+            'driver' => 'custom',
+            'via' => App\config\error_log::class,
+            'path' => storage_path('logs/error_log/error.log'),
+            'level' => 'debug',
+            'permission' => 0777,
+        ],
     ],
 
 ];

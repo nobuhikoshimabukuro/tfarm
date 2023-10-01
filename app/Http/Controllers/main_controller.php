@@ -16,7 +16,7 @@ class main_controller extends Controller
 
     function test(Request $request)
     {       
-        Storage::makeDirectory('dir');
+        Log::channel('error_log')->info("TEST");
         return view('test');
     }
 
