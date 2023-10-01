@@ -16,17 +16,31 @@ class main_controller extends Controller
 
     function test(Request $request)
     {       
+        try {
+
+            Log::info("info ログ!");
+    
+        } catch (Exception $e) {            
+            
+            $ErrorMessage =  $e->getMessage();            
+
+
+             // ファイルを書き込みモードで開く
+            $file_handle = fopen( storage_path('laravel.txt'), "w");
+
+            // ファイルへデータを書き込み
+            fwrite( $file_handle, $ErrorMessage);
+
+            // ファイルを閉じる
+            fclose($file_handle);
+            
+                                
+        }
+
         // Log::channel('error_log')->info("TEST");
-        // Log::info("info ログ!");
+        
 
-        // ファイルを書き込みモードで開く
-        $file_handle = fopen( storage_path('laravel.txt'), "w");
-
-        // ファイルへデータを書き込み
-        fwrite( $file_handle, "保存したいテキスト");
-
-        // ファイルを閉じる
-        fclose($file_handle);
+       
         
         return view('test');
     }
