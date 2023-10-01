@@ -16,7 +16,8 @@ class main_controller extends Controller
 
     function test(Request $request)
     {       
-        Log::channel('error_log')->info("TEST");
+        // Log::channel('error_log')->info("TEST");
+        Log::info("info ログ!");
         return view('test');
     }
 
