@@ -33,8 +33,8 @@
     height: 50px;
     width: 50px;
     position: fixed;
-    right: 2vw;
-    bottom: 2vh;
+    right: 3vw;
+    bottom: 3vh;
     background-color:rgb(89,240, 250) ;
     opacity: 0.6;
     /* border: solid 1px #000;
