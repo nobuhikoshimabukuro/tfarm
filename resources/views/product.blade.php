@@ -21,8 +21,9 @@
 }
 
 .product-photo{    
-    width: 95%;    
-    height: 95%;    
+    width: 100%;    
+    height:  100%;
+    object-fit: contain; 
 }
 
 .product-name-area{
@@ -79,9 +80,9 @@
 }
 
 .sub-photo{     
-    width:95%;    
-    height:95%;
-    object-fit: contain;    
+    width: 100%;    
+    height:  100%;
+    object-fit: contain;   
 }
 
 
