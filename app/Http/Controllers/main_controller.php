@@ -14,31 +14,6 @@ use App\Mail\InquiryMail;
 class main_controller extends Controller
 {
 
-    function test(Request $request)
-    {       
-        // try {
-
-        //     Log::info("info ログ!");
-    
-        // } catch (Exception $e) {            
-            
-        //     $ErrorMessage =  $e->getMessage();            
-
-
-        //      // ファイルを書き込みモードで開く
-        //     $file_handle = fopen( storage_path('test.txt'), "w");
-
-        //     // ファイルへデータを書き込み
-        //     fwrite( $file_handle, $ErrorMessage);
-
-        //     // ファイルを閉じる
-        //     fclose($file_handle);
-            
-                                
-        // }
-
-        return view('test');
-    }
 
     function index(Request $request)
     {       
@@ -60,14 +35,6 @@ class main_controller extends Controller
             session()->flash('desired_url', $desired_url);
             return redirect()->route('password_check');    
         }
-
-
-
-        $Files = array(
-        "Result" => "qr_ticket_error",
-        "Message" => '',
-        );   
-
 
 
         $all_product_info_array = array();
@@ -137,23 +104,7 @@ class main_controller extends Controller
         $a = $all_product_info_array;
 
 
-        // foreach ($all_product_info_array as $product_info) {
-        //     $product_id = $product_info["product_id"];
-        //     $product_name = $product_info["product_name"];
-        //     $explanation = $product_info["explanation"];
-        //     $product_info_array = $product_info["product_info_array"];
 
-        //     $test = $product_info_array[0]["asset_path"];
-
-        //     foreach ($product_info_array as $product_info) {
-        //         $product_id = $product_info["product_id"];
-        //         $product_name = $product_info["product_name"];
-        //         $explanation = $product_info["explanation"];
-        //         $product_info_array = $product_info["product_info_array"];
-    
-        //         $test = $product_info_array[0]["asset_path"];
-        //     }
-        // }
         
 
         return view('product', compact('all_product_info_array'));        

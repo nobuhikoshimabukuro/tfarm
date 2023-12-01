@@ -95,6 +95,24 @@
 
 <body>
 
+    @php
+
+        $header_flg = false;
+
+        if ((session()->exists('login_flg'))) {
+
+            $login_flg = session()->get('login_flg');
+
+            //login_flgが'1'はsession確認OK
+            if ($login_flg == 1) {
+                $header_flg = true;
+            }
+        }
+
+
+    @endphp
+
+    @if($header_flg)
 
     {{-- PC --}}
     <div class="d-none d-md-block w-100">
@@ -276,6 +294,7 @@
         
     </div>
 
+    @endif
 
     {{-- 購入案内モーダル --}}
     <div class="modal fade" id="purchase_modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="purchase_modal_label" aria-hidden="true">
