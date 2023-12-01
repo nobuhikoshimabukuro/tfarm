@@ -184,10 +184,6 @@
   border-bottom: dotted 2px blue;
 }
 
-.emphasis{
-  font-weight: 900;
-  color: red;
-}
 
 </style>
 
@@ -281,7 +277,7 @@
           <br>
           皆様に直接購入して頂けるよう<a href="{{env('base_url') }}" class="underline" target="_blank">インターネット販売（BASE）</a>を行っております。
           <br>          
-          <span class="emphasis">2023年の収穫分は多くのお客様からのご好評によりは完売致しました。
+          <span class="emphasis item-flash">2023年の収穫分は多くのお客様からのご好評によりは完売致しました。
           <br>
           誠にありがとうございました。</span>
           <br>

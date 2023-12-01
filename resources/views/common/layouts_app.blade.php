@@ -61,16 +61,21 @@
 }
 
 
+#purchase_modal p{
+  font-weight: 600;
+  color: rgb(2, 2, 43);
+}
+
 #purchase_modal .modal-header{
-    background-color: rgb(244, 253, 232)
+    background-color: rgb(241, 249, 238)
 }
 
 #purchase_modal .modal-body{
-    background-color: rgb(240, 250, 235)
+    background-color: rgb(240, 241, 237)
 }
 
 #purchase_modal .modal-footer{
-    background-color: rgb(244, 253, 232)
+    background-color: rgb(241, 249, 238)
 }
 
 
@@ -78,12 +83,15 @@
   border-bottom: dotted 2px blue;
 }
 
-.emphasis{
-  font-weight: 900;
-  color: red;
-}
+
 
 </style>
+
+
+<div class="loader-area">
+    <div class="loader">
+    </div>
+</div>
 
 <body>
 
@@ -282,28 +290,24 @@
                 <div class="modal-body">
 
                     <p>
-                        BASEにて販売をしております。
+                        販売はBASEにて行っております。
                         <br>
                         BASEで販売品や料金を確認できます。
                         <br>
-                        <span class="emphasis">2023年の収穫分は多くのお客様からのご好評によりは完売致しました。
-                        <br>
-                        誠にありがとうございました。
-                        </span>
-
+                        <span class="emphasis item-flash">2023年の収穫分は多くのお客様からのご好評によりは完売致しました。
+                            <br>
+                            誠にありがとうございました。</span>
                         <br>
                         
                         <br>
                         <a href="{{ env('base_url')}}" target="_blank" class="underline">
-                            たかすじファーム購入ページ                            
+                            たかすじファーム購入ページ
                         </a>
                         
                         <br>
                         <a href="https://help.thebase.in/hc/ja/articles/115000085522-BASE" target="_blank" class="underline">
                             BASEとは                                
-                        </a>
-
-                       
+                        </a>                       
 
                     </p>
 
@@ -312,7 +316,7 @@
                 </div>
 
                 <div class="modal-footer">               
-                    <button type="button" id="" class="btn" data-bs-dismiss="modal">閉じる</button>
+                    <button type="button" id="" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                 </div>
             </div>
         </div>
@@ -341,6 +345,10 @@
 
 <!--▽▽jQuery▽▽-->
 <script>
+
+    $(window).on('load', function (){       
+        end_loader();
+    });
 
 
   $('#hamburger').on('click', function(){
