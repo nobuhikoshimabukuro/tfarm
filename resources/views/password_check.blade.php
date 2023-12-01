@@ -33,49 +33,45 @@
 
 <div class="mt-3 text-center container">
 
-    <form action="{{ route('password_check_process') }}" id='approve_form' method="post" enctype="multipart/form-data">
-        @csrf
-        <div class="row">                    
+    <div class="row justify-content-center">                        
+        
+        <div class="col-12 mt-5 text-center p-0">
+            <h3>
+                たかすじファームWEB開発中
+            </h3>
+        </div>
 
-            <div class="row m-1">                    
-                
-                <div class="col-12 text-center">                    
-                    <h4>web開発中</h4>
-                </div>
-            </div>       
-          
-            <div class="row m-1">           
-                <div class="col-4 text-end">
-                    <label for="" class="col-form-label original-label">パスワード</label>
-                </div>
-                <div class="col-4">                    
-                    <input type="hidden" name="desired_url" id="" value="{{session('desired_url')}}" class="form-control">
-                    <input type="password" name="password" id="password" value="" class="form-control text-end">
-                </div>
 
-                <div class="col-4 text-start">
-                    <button type="button" id='approve_button' class="btn btn-secondary">GO</button>
-                </div>      
-            </div>           
-
-            @if(session('password_check_nerror'))
+        <div class="col-11 col-md-8 border rounded" style="padding: 1.25rem">
             
-                <div class="row ajax-msg">                     
-                    <div class="alert alert-danger text-center">
-                        パスワード不一致 
-                    </div>                    
-                </div>   
-            @endif
+            <form action="{{ route('password_check_process') }}" id='approve_form' method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group row">
+                    <label for="login_id" class="col-lg-4 col-form-label text-lg-right">パスワード</label>
 
-        </div>      
+                    <div class="col-lg-6">
+                        
+                        <input type="tel" name="password" id="password" value="" class="form-control text-end">
 
+                    </div>
+                </div>
 
-    </form>
+            
+                            
 
-    
-    <a href="{{ route('test') }}">                            
-       test
-    </a>
+                <div class="form-group row">         
+                    <div class="col-lg-10 text-right">
+                        <button type="button" id='approve_button' class="btn btn-secondary">GO</button>
+                    </div>
+                    
+                </div>
+
+            </form>
+
+        </div>
+        
+    </div>
+
 </div>
 
 
