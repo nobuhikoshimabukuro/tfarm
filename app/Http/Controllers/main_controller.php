@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Exception;
 
-
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
@@ -159,7 +159,7 @@ class main_controller extends Controller
             $password = $request->password;
           
 
-            $Today = Carbon::today();
+            $Today = Carbon::now();
             // $correct_password =  $Today->format('Y') . "t" . $Today->format('md'); 
             $correct_password = $Today->format('md'); 
 
